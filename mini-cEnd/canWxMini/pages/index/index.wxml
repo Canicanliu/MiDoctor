@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+  <view class='bottom-content'>
+      <view class='list-content'>
+        
+        <view bindtap='searchOrder' data-type='all'>
+          <view class='icon'>
+            <image src='/images/datement.png'></image>
+          </view>
+          <view>全部订单</view>
+          <view class='arrow'>></view>
+        </view>
+        
+      </view>
+    </view>
+
+  
+</view>

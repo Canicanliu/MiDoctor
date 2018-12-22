@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/minidoctor.iml" filepath="$PROJECT_DIR$/minidoctor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minidoctor-api/minidoctor-api.iml" filepath="$PROJECT_DIR$/minidoctor-api/minidoctor-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minidoctor-core/minidoctor-core.iml" filepath="$PROJECT_DIR$/minidoctor-core/minidoctor-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/minidoctor-web/minidoctor-web.iml" filepath="$PROJECT_DIR$/minidoctor-web/minidoctor-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,6 @@
+spring:
+    profiles:
+      active: "dev"
+wx:
+  miniprogram:
+    loginUrl: https://api.weixin.qq.com/sns/jscode2session?grant_type=authorization_code

@@ -1,0 +1,24 @@
+<view id='container'>
+  <view class='main'>
+    <view class='top'>
+      <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+      </view>
+    </view>
+    <view class='bottom'>
+      <view class="grids" wx:for="{{dateMentInfos}}" wx:key="name">
+        <view class="grid" data-name='{{item.name}}'>          
+          <view class='grid_icon'>
+            <image src='/images/datement.png'></image>
+          </view>          
+          <text class="grid_name">{{item.name}}</text>  
+          <view class='grid_arrow'>></view>        
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

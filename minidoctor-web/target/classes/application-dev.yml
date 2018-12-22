@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /minidoctor
+
+spring:
+    application:
+    name: minidoctor-web
+    #上传文件大小限制
+    servlet:
+        multipart:
+            max-file-size: 20Mb
+            max-request-size: 20Mb
+    #dubbo
+    dubbo:
+      application:            #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
+        name: minidoctor-consumer
+      registry:                 #注册中心配置，用于配置连接注册中心相关信息。
+        address: zookeeper://localhost:2181
+        group: dev
+      protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受。
+        name: dubbo
+        port: 20110
+      scan: com.can.minidoctor.web  #服务暴露与发现消费所在的package
+
+    #redis
+    redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+      password:
+      timeout: 5000
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
