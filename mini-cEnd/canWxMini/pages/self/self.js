@@ -91,7 +91,9 @@ Page({
       data: { dateMentId:value},
       success: function (result) {        
         console.log(result.data.data)
-
+        wx.navigateTo({
+          url: '../dateMentDetail/dateMentDetail?current=' + JSON.stringify(object)
+        })
       }
     })
   }
