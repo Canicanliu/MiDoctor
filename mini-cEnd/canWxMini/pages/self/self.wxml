@@ -11,7 +11,7 @@
     </view>
     <view class='bottom'>
       <view class="grids" wx:for="{{dateMentInfos}}" wx:key="name">
-        <view class="grid" data-name='{{item.name}}'>          
+        <view class="grid" data-name='{{item.name}}' data-value='{{item.dateMentId}}' bindtap='getDetail'>          
           <view class='grid_icon'>
             <image src='/images/datement.png'></image>
           </view>          

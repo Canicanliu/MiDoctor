@@ -22,6 +22,10 @@ public class MiniDateMentDao {
         return mapper.insert(record);
     }
 
+    public MinidoctorDatement getDatementById(Long dId){
+        return mapper.selectByPrimaryKey(dId);
+    }
+
     public List<MinidoctorDatement> getDatementByOpenId(String openId){
         MinidoctorDatementExample example=new MinidoctorDatementExample();
         example.createCriteria().andOpenIdEqualTo(openId);

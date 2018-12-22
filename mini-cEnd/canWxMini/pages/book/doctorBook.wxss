@@ -137,11 +137,13 @@
   
 }
 
-.btn{
-  align-content: center;
-  width: 80%;
+.btn{   
+  width: 100%;
+  display: flex;
+  align-items: center;  
 }
 .btSure{
+  width: 80%;
   background-color: cornflowerblue;
 }
 .infoForm{

@@ -1,10 +1,12 @@
 package com.can.minidoctor.core.service.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
+import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
 import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
 import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 import com.can.minidoctor.api.dto.response.ArrangementResp;
 import com.can.minidoctor.api.dto.response.DateMentLisResp;
+import com.can.minidoctor.api.dto.response.wxmini.DateDetailResp;
 import com.can.minidoctor.api.utils.DateUtils;
 import com.can.minidoctor.api.utils.ResultUtils;
 import com.can.minidoctor.core.dao.arrangement.MiniArrangeMentDao;
@@ -39,6 +41,21 @@ public class MiniBusinessService {
     MiniDateMentDao miniDateMentDao;
     @Autowired
     MiniArrangeMentDao miniArrangeMentDao;
+
+    public Result getDateDetail(DateDetailReq req){
+        MinidoctorDatement md=miniDateMentDao.getDatementById(req.getDateMentId());
+        if(null!=md){
+            DateDetailResp resp=new DateDetailResp();
+            resp.setDateId(md.getId());
+            resp.setHospital(HospitalEnums.getNameByCode(md.getHostpital()));
+            resp.setIdentification(md.getIdentification());
+            resp.setMobile(md.getMobile());
+            resp.setName(md.getName());
+            resp.setWorkDate(DateUtils.formatDate(md.getWorkDate())+":"+md.getTimeSection());
+            return ResultUtils.getOkResult(resp);
+        }
+        return ResultUtils.getFailedResult(1,"没有找到");
+    }
 
     public Result getMyDates(GetDateListReq req){
         List<MinidoctorDatement> rets=miniDateMentDao.getDatementByOpenId(req.getMdc_openId());

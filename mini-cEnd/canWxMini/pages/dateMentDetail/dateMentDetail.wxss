@@ -1,0 +1,42 @@
+.info{
+  
+  position: relative;
+  width: 100%;
+  margin: 5,5,5,5;
+  background-color: white;
+
+}
+.infoDate{  
+  width: 100%
+  
+}
+.infoKey{
+  float: left;
+  width: 30%
+}
+.inputInfo{
+  border:0.5px solid;
+  color: #378888;
+  float: left;  
+  width: 66%
+  
+}
+.sline{
+  height: 10px;
+}
+
+.btn{ 
+  margin-top: 100px;  
+  width: 100%;
+  display: flex;
+  align-items: center;  
+}
+.btSure{
+  width: 80%;
+  background-color: cornflowerblue;
+}
+.infoForm{
+  width: 100%;
+  margin: 0;
+  padding: 0
+}

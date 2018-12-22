@@ -1,9 +1,11 @@
 {
   "pages": [
+    
     "pages/self/self",
-    "pages/book/doctorBook",   
-    "pages/index/index",    
-    "pages/logs/logs"  
+    "pages/dateMentDetail/dateMentDetail",
+    "pages/book/doctorBook",
+    "pages/index/index",
+    "pages/logs/logs"
     
   ],
   "window": {

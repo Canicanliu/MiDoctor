@@ -1,0 +1,29 @@
+<form class='infoForm' bindsubmit='submitDateMent'>
+    <view class='infoDate'>
+      <text>预约信息：</text>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>预约时间：</text>      
+      <input class='inputInfo' name='date' value='{{workDate}}'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>预约医院：</text>
+      <input class='inputInfo' value='{{hospital}}'></input>      
+    </view>
+    <view class='info'>
+      <text class='infoKey'>姓     名:  </text>
+      <input class='inputInfo' value='{{name}}'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>身份证: </text>
+      <input class='inputInfo' value='{{identification}}'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>手机号:  </text>
+      <input class='inputInfo' value='{{mobile}}'></input>
+    </view>
+    <view class='sline'></view>
+    <view class='btn'>
+      <button form-type='submit' class='btSure'>取消</button>
+    </view>
+  </form>

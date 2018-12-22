@@ -81,5 +81,20 @@ Page({
       }
     })
 
+  },
+  //获取详情
+  getDetail:function(e){
+    var value = e.currentTarget.dataset.value
+    wx.request({
+      url: 'http://localhost:8080/minidoctor/wx/business/getDateDetail?sessionId=' + wx.getStorageSync("miniSessionId"),
+      method: "POST",
+      data: { dateMentId:value},
+      success: function (result) {        
+        console.log(result.data.data)
+
+      }
+    })
   }
+
+
 })
