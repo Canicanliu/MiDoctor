@@ -92,7 +92,7 @@ Page({
       success: function (result) {        
         console.log(result.data.data)
         wx.navigateTo({
-          url: '../dateMentDetail/dateMentDetail?current=' + JSON.stringify(object)
+          url: '../dateMentDetail/dateMentDetail?current=' + JSON.stringify(result.data.data)
         })
       }
     })
