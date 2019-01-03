@@ -1,0 +1,267 @@
+/** common.wxss **/
+.page{
+	width:100%;
+}
+.index{
+    background-color: #FBF9FE;
+    flex: 1;
+    -webkit-flex:1;
+    min-height: 100%;
+    font-size: 16px;
+}
+.bg{
+	background: -webkit-linear-gradient(top, #01244f, #447bbd); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(top, #01244f, #447bbd); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(top, #01244f, #447bbd); /* Firefox 3.6 - 15 */
+	background: linear-gradient(top, #01244f, #447bbd); /* 标准的语法 */
+}
+.center {
+	text-align:center;
+}
+.t_l{
+	text-align:left;
+}
+.t_r{
+	text-align:right;
+}
+.titleF30{
+	font-size:30px;
+}
+
+.scroll_view_css{
+	min-height: 100%;
+	height: 100%;
+}
+
+/** 共同样式 **/
+/**布局，方向，换行**/ 
+.flex_f{
+	display: -webkit-flex;	
+	display: flex;		
+	-webkit-flex-direction: row;
+	flex-direction: row;
+}
+.flex_f_c{
+	display: -webkit-flex;
+	display: flex;		
+	-webkit-flex-direction: column;
+	flex-direction: column;
+	align-content:center;
+  -webkit-align-content:center;
+}
+.flex_center{
+	-webkit-align-items: center;
+	align-items: center;
+}
+/** 排序小前，放大比例，缩小比例 **/ 
+.flex_c{
+	-webkit-flex: 1;		  /* Chrome */
+	flex: 1;		
+	align-self:auto;
+}
+.flex2{
+	-webkit-flex: 2;	
+	flex: 2;	
+}
+.flex01{
+	-webkit-flex: 0.1;	
+	flex: 0.1;	
+}
+.flex05{
+	-webkit-flex: 0.5;
+	flex: 0.5;	
+}
+.flex08{
+	-webkit-flex: 0.8;
+	flex: 0.8;		
+}
+
+.t_w{
+	color:white;
+}
+/*深灰  */
+.t_h{
+	color: #798691;
+}
+/*深蓝  */
+.t_b{
+	color:#00234e;
+}
+/*浅蓝  */
+.t_t {
+	color:#00ade9;
+}
+/*南航logo蓝  */
+.t_t {
+	color:#008acb;
+}
+.t8{
+	font-size:20rpx;
+}
+.t12{
+	font-size:26rpx;
+}
+.t14{
+	font-size:28rpx;
+}
+.t16{
+	font-size:32rpx;
+}
+.t18{
+	font-size:36rpx;
+}
+.t20{
+	font-size:40rpx;
+}
+.t24{
+	font-size:48rpx;
+}
+.cm_btn{
+  font-size:32rpx;
+  width:320rpx;
+  height:96rpx;
+  line-height:96rpx;
+  background:#e5004a;
+  color:#fff;
+  border-radius:48rpx;
+  box-shadow:0 0.1rem 0.5rem #c2c0c2;
+  transition: background ease .4s;
+}
+.cm_btn_disable{
+  font-size:32rpx;
+  width:320rpx;
+  height:96rpx;
+  line-height:96rpx;
+  background:#d1d9e0;
+  color:#fff;
+  border-radius:48rpx;
+  box-shadow: none; 
+}
+/*溢出文本省略号替代  */
+.cm-overtext{
+  overflow-x:hidden;
+  text-overflow :ellipsis;
+  white-space:nowrap;
+}
+/*航班状态*/
+/*航段*/
+/*计划SCH 取消CNL 到达ONN 起飞AIR 提前AHD 备降DVT 返航RTN 延误DLY*/
+.flt_bg_SCH {
+	color:#00ade9;
+	border:4rpx solid #00ade9;
+	border-radius:10rpx;
+	font-size: 30rpx;
+
+}
+.flt_bg_ONN,.flt_bg_DWN,.flt_bg_ARV{
+	color:#006ea2;
+	border:4rpx solid #006ea2;
+	border-radius:10rpx;
+	font-size: 30rpx;
+
+}
+.flt_bg_AIR ,.flt_bg_AHD ,.flt_bg_BDSTR,.flt_bg_BDQCK,.flt_bg_OFF,.flt_bg_CLSDR{
+	color:#25bf68;
+	border:4rpx solid #25bf68;
+	border-radius:10rpx;
+	font-size: 30rpx;
+
+}
+/*非正常状态*/
+.flt_bg_CNL, .flt_bg_DVT ,.flt_bg_RTN, .flt_bg_DLY ,.flt_bg_DVTO,.flt_bg_REFLY,.flt_bg_REFCL{
+	color:#ff9c00;
+	border:4rpx solid #ff9c00;
+	border-radius:10rpx;
+	font-size: 30rpx;
+
+}
+/*前序航班*/
+/*计划SCH 取消CNL 到达ONN 起飞AIR 提前AHD 备降DVT 返航RTN 延误DLY*/
+.pre_flt_bg_SCH {
+	color:#fff;
+	background: #00ade9;
+	border:1px solid #00ade9;
+	border-radius:40rpx;
+	font-family: "Microsoft YaHei",Serif;
+}
+.pre_flt_bg_ONN,.pre_flt_bg_DWN,.pre_flt_bg_ARV {
+	color:#fff;
+	background: #006ea2;
+	border:1px solid #006ea2;
+	border-radius:40rpx;
+	font-family: "Microsoft YaHei",Serif;
+}
+.pre_flt_bg_AIR ,.pre_flt_bg_AHD ,.pre_flt_bg_BDSTR,.pre_flt_bg_BDQCK,.pre_flt_bg_OFF,.pre_flt_bg_CLSDR{
+	color:#fff;
+	background: #25df68;
+	border:1px solid #25df68;
+	border-radius:40rpx;
+	font-family: "Microsoft YaHei",Serif;
+}
+/*非正常状态*/
+.pre_flt_bg_CNL, .pre_flt_bg_DVT ,.pre_flt_bg_RTN, .pre_flt_bg_DLY,.pre_flt_bg_DVTO,.pre_flt_bg_REFLY,.pre_flt_bg_REFCL{
+	color:#fff;
+	background: #ff9c00;
+	border:1px solid #ff9c00;
+	border-radius:40rpx;
+	font-family: "Microsoft YaHei",Serif;
+}
+
+/*loading 模板样式  */
+.cm-loader-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background:linear-gradient(to bottom ,rgb(0,35,78),rgb(68,122,189));
+}
+
+.cm-loader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-box-flex: flex;
+  width: 100%;
+  margin-top: 30%;
+}
+
+.cm-loader>image {
+  height: 400rpx;
+  width: 450rpx;
+  z-index: 97;
+  position: relative;
+  transform: scale(0.85)
+}
+
+.cm-load-head{
+  position: absolute;
+  z-index: 100;
+  top: 0%;
+  left:0%;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+}
+
+.cm-load-text{
+  color: #fff;
+}
+
+.cm-load-needle {
+  position: absolute;
+  z-index: 99;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.7);
+  -webkit-transform: scale(0.7);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+}

@@ -15,13 +15,13 @@ public class MakeAnArrangeReq extends BaseDto {
     private String identification;
     private String mobile;
     private Byte enabled;
-    private Byte hosptital;
+    private String hosptital;
 
-    public Byte getHosptital() {
+    public String getHosptital() {
         return hosptital;
     }
 
-    public void setHosptital(Byte hosptital) {
+    public void setHosptital(String hosptital) {
         this.hosptital = hosptital;
     }
 

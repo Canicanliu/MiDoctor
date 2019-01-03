@@ -14,33 +14,30 @@
 .userinfo-nickname {
   color: #aaa;
 }
-.grid{
-  width: 100%;  
-}
+
 .grid_name{
-  margin-top: 10px;
-  display: block;
-  width: 65%;
-  float: left;
-  color:aquamarine;
-}
-.grid_arrow{
-  margin-top: 10px;
-  display: block;
-  width: 8%;
-  float: right;
-  color: #999;
+  margin: 5px 5px;
 }
 
-.grid_icon{  
-  margin-top: 10px;
-  float: left;
-  clear: left;
-  width: 52rpx;
-  height: 52rpx;
+.grids{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 5px;
 }
 
-.grid_icon image{
-  width: 100%;
-  height: 100%;
+.grid{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.grid_icon{
+  width: 10px;
+  height: 10px;
+}
+.icon_img{
+  width: 20px;
+  height: 20px;
 }

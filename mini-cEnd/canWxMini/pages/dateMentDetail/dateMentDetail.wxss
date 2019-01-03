@@ -1,42 +1,25 @@
-.info{
-  
-  position: relative;
-  width: 100%;
-  margin: 5,5,5,5;
-  background-color: white;
-
-}
-.infoDate{  
-  width: 100%
-  
-}
-.infoKey{
-  float: left;
-  width: 30%
-}
-.inputInfo{
-  border:0.5px solid;
-  color: #378888;
-  float: left;  
-  width: 66%
-  
-}
-.sline{
-  height: 10px;
-}
-
-.btn{ 
-  margin-top: 100px;  
-  width: 100%;
+.infoForm{
+  margin-top: 20px;
   display: flex;
-  align-items: center;  
+  flex-direction: column;
+  justify-content: space-between;
 }
-.btSure{
+.infoDate{
+  display: flex;
+  flex-direction: column;  
+}
+.infoHead{  
+  text-align: center;
+  display: inline-block;  
+}
+.info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px 5px;
+}
+
+.btCancel{
   width: 80%;
   background-color: cornflowerblue;
-}
-.infoForm{
-  width: 100%;
-  margin: 0;
-  padding: 0
 }

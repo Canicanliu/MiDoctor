@@ -1,4 +1,4 @@
-// pages/dateMentDetail/dateMentDetail.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.dateMent = JSON.parse.parse(options.current)
+    console.log(options.current)
+    this.setData({      
+      dateMent: JSON.parse(options.current)
+    })
   },
 
   /**

@@ -9,7 +9,20 @@ Page({
     hospital: '红棉社康',
     hospitalValue:0,
     selDate: '',
-    arrangeMents: []
+    arrangeMents: [
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" }
+    ]
   },
   bindShowMsg() {
     this.setData({

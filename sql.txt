@@ -1,0 +1,29 @@
+CREATE TABLE `minidoctor_arrangement` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主健id',
+  `work_date` timestamp NOT NULL COMMENT '工作日期', 
+  `work_date_str` varchar(32)  NULL COMMENT 'yyyy-MM-dd',
+  `before_noon` tinyint(4)  null comment '上午人数',
+  `after_noon` tinyint(4)  NULL COMMENT '下午人数',
+  `before_supper` tinyint(4)  NULL COMMENT '晚班上人数',
+  `after_supper` tinyint(4)  NULL COMMENT '晚班下人数',  
+  `work_type` tinyint(4) not null comment '班制：0为白班，1为夜班',
+  `hostpital` tinyint(4) not null comment '医院：0为红棉社康，1为怡景社康',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',  
+  PRIMARY KEY (`id`)  
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='排班表';
+
+CREATE TABLE `minidoctor_datement` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主健id',
+  `arrange_id` bigint(20) NOT NULL  COMMENT '排班id',
+  `work_date` timestamp NOT NULL COMMENT '预约日期', 
+  `time_section` varchar(32)  NULL COMMENT '时间段',
+  `open_id` varchar(32)  NULL COMMENT 'openId',
+  `name` varchar(32)  NULL COMMENT '姓名',
+  `identification` varchar(32)  NULL COMMENT '身份证号',  
+  `mobile` varchar(32)  NULL COMMENT '手机号',  
+  `enabled` tinyint(4) not null comment '是否可用',
+  `hostpital` tinyint(4) not null comment '医院：0为红棉社康，1为怡景社康',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',  
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间', 
+  PRIMARY KEY (`id`)  
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='预约表';

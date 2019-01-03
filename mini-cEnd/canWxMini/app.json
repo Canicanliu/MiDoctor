@@ -1,9 +1,9 @@
 {
   "pages": [
-    
-    "pages/self/self",
-    "pages/dateMentDetail/dateMentDetail",
+    "pages/book2/doctorBook",
     "pages/book/doctorBook",
+    "pages/self/self",
+    "pages/dateMentDetail/dateMentDetail",    
     "pages/index/index",
     "pages/logs/logs"
     
@@ -11,7 +11,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "医难为",
+    "navigationBarTitleText": "微易医",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -21,11 +21,15 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/book/doctorBook",
-        "text": "首页"
+        "pagePath": "pages/book2/doctorBook",
+        "iconPath": "resources/images/icon_xc_gray.png",
+        "selectedIconPath": "resources/images/icon_xc_blue.png",
+        "text": "健康有约"
       },
       {
         "pagePath": "pages/self/self",
+        "iconPath": "resources/images/icon_user_gray.png",
+        "selectedIconPath": "resources/images/icon_user_blue.png",
         "text": "我"
       }
     ]

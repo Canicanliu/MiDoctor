@@ -1,7 +1,52 @@
-@import "../../resources/css/common.wxss";
-.container{margin: 0;padding: 0;background-color:aliceblue;height: 100%}
+.container{margin: 0;padding: 0;background-color:rgb(240, 246, 255);height: 100%}
+
+.headbg{
+  
+        height: 90PX;
+        width: 100%;
+        filter: blur(4PX);
+}
+
+.list-hos {       
+    margin-top: -80px;
+    z-index: 2;
+    height: 60rpx;
+    border-radius: 10PX 10PX 10PX 10PX;
+    display: flex;     
+    flex-direction: row;    
+    justify-content: center;
+    
+}
+
+.infoDate{  
+  width: 95%;
+  margin: 10px 10px;
+  z-index: 2;
+  
+}
+.infoDate2{  
+  width: 95%;
+  margin: 5px 5px;
+  z-index: 2;
+  
+}
+.dateText{
+    border: 1PX solid;
+    padding: 2PX 6PX;
+    font-size: 14PX;
+    border-radius: 18PX 4PX 4PX 0PX;
+    margin: 0 5PX;
+    
+  }
+.dateText2{
+    border: 1PX solid;
+    padding: 2PX 6PX;
+    font-size: 14PX;
+    border-radius: 18PX 4PX 4PX 0PX;    
+  }
+
 .grids{
-  margin: 0;padding: 0;
+  margin: 20px 10px;
 }
 .grid {
     position: relative;
@@ -10,6 +55,7 @@
     width: 33.33333333%;
     box-sizing: border-box;
     border:0.5px dashed;
+    border-radius: 4PX 4PX 4PX 4PX;
 }
 
 .grid:active {
@@ -47,7 +93,7 @@
     text-align: center;
     font-weight: bold;
     color: #000;
-    font-size: 14px;
+    font-size: 12px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -55,34 +101,43 @@
 
 .grid__sub {
     display: block;
-    text-align: left;
+    margin: 1px 2px;
+    text-align: center;
     font-weight: bold;
     padding: 3px 0px;
     color: #000;
-    font-size: 16px;
+    font-size: 13px;
     white-space: nowrap;
     text-overflow: ellipsis;
     border-top: 1px;
     overflow: hidden;
+    border-bottom: 1px solid #ccc;
 }
 
-.list-hos {
-    height: 60rpx;
-    width: 780rpx;
-    display: flex; 
-    position: relative;    
-    justify-content: center;
+.infoForm{  
+  width: 95%; 
+  margin: 0 10px;  
 }
  
+  .infos{  
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+ .info{  
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
 
  
 .select_box {
     background-color: #eee;
-    padding: 0 10rpx;
-    width: 93%;
+    padding: 0 10rpx;    
     position: absolute;
     top: 5%;
-    z-index: 1;
+    z-index: 3;
     overflow: hidden;
     animation: myfirst 0.5s;
 }
@@ -113,18 +168,8 @@
   height: 20rpx;  
 }
 
-.info{
-  
-  position: relative;  
-  width: 100%;
-  margin: 5,5,5,5;
-  background-color: white;
 
-}
-.infoDate{  
-  width: 100%
-  
-}
+
 .infoKey{
   float: left;
   width: 30%
@@ -146,9 +191,5 @@
   width: 80%;
   background-color: cornflowerblue;
 }
-.infoForm{
-  width: 100%;
-  margin: 0;
-  padding: 0
-}
+
 

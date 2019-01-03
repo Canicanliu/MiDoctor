@@ -1,4 +1,4 @@
-//index.js
+import canHost from '../../config/interface.js'
 //获取应用实例
 const app = getApp()
 
@@ -41,7 +41,7 @@ Page({
 
     var that = this
     wx.request({
-      url: 'http://localhost:8080/minidoctor/wx/business/getMyDatements?sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost +'wx/business/getMyDatements?sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data:{},
       success: function (result) {
@@ -72,7 +72,7 @@ Page({
         console.log(res.code)
         var code = res.code
         wx.request({
-          url: 'http://localhost:8080/minidoctor/wx/mini/doLogin?code=' + code,
+          url: canHost.miniHost +'wx/mini/doLogin?code=' + code,
           method: "POST",
           success: function (result) {
             console.log(result)
@@ -86,7 +86,7 @@ Page({
   getDetail:function(e){
     var value = e.currentTarget.dataset.value
     wx.request({
-      url: 'http://localhost:8080/minidoctor/wx/business/getDateDetail?sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost +'wx/business/getDateDetail?sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data: { dateMentId:value},
       success: function (result) {        

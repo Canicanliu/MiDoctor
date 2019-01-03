@@ -10,12 +10,13 @@
       </view>
     </view>
     <view class='bottom'>
+      <text class="grid_name">我的预约:</text>  
       <view class="grids" wx:for="{{dateMentInfos}}" wx:key="name">
         <view class="grid" data-name='{{item.name}}' data-value='{{item.dateMentId}}' bindtap='getDetail'>          
           <view class='grid_icon'>
-            <image src='/images/datement.png'></image>
+            <image class='icon_img'src='/resources/images/datement.png'></image>
           </view>          
-          <text class="grid_name">{{item.name}}</text>  
+          <text class="grid_content">{{item.name}}</text>  
           <view class='grid_arrow'>></view>        
         </view>
       </view>

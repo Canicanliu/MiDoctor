@@ -3,6 +3,7 @@ package com.can.minidoctor.web.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.can.minidoctor.api.aop.log.LogParams;
 import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
+import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
 import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
 import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
@@ -46,8 +47,8 @@ public class MiniBusinessController {
 
     @RequestMapping("/getFutureArrange")
     @LogParams("获取排班")
-    public Object getFutureArrange(int hospital){
-        return miniBusinessServiceFacade.getFutureArrange(hospital);
+    public Object getFutureArrange(@RequestBody FutureArrangReq req){
+        return miniBusinessServiceFacade.getFutureArrange(req);
     }
 
 }

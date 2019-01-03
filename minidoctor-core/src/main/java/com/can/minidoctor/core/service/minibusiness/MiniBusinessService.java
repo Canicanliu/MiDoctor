@@ -2,6 +2,7 @@ package com.can.minidoctor.core.service.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
 import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
+import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
 import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
 import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 import com.can.minidoctor.api.dto.response.ArrangementResp;
@@ -86,7 +87,7 @@ public class MiniBusinessService {
         }
         String realDate=arr[0];
         String section=arr[1];
-        MinidoctorArrangement arrangement=miniArrangeMentDao.checkIfCanDate(realDate,req.getHosptital(),SectionTypeEnums.getCodeByName(section));
+        MinidoctorArrangement arrangement=miniArrangeMentDao.checkIfCanDate(realDate,HospitalEnums.getCodeByName(req.getHosptital()),SectionTypeEnums.getCodeByName(section));
         if(null==arrangement){
             return ResultUtils.getFailedResult(1,"所选时间不可预约");
         }
@@ -106,7 +107,7 @@ public class MiniBusinessService {
         minidoctorDatement.setWorkDate(DateUtils.parseDate(realDate));
         minidoctorDatement.setUpdateTime(now);
         minidoctorDatement.setArrangeId(arrangement.getId());
-        minidoctorDatement.setHostpital(req.getHosptital());
+        minidoctorDatement.setHostpital(HospitalEnums.getCodeByName(req.getHosptital()));
         int cnt=miniDateMentDao.intsertOneDatement(minidoctorDatement);
         if(cnt==1){
             return ResultUtils.getOkResult(true);
@@ -114,9 +115,9 @@ public class MiniBusinessService {
         return ResultUtils.getFailedResult(1,"error");
     }
 
-    public Result getFutureArrange(int hospital){
+    public Result getFutureArrange(FutureArrangReq req){
 
-        List<MinidoctorArrangement> rets=miniArrangeMentDao.getFutureArrangeMents(new Date(),hospital);
+        List<MinidoctorArrangement> rets=miniArrangeMentDao.getFutureArrangeMents(new Date(),req.getHospital());
         List<ArrangementResp> resps=getDefaultArrange();
 
         for(ArrangementResp ar:resps){
@@ -151,7 +152,7 @@ public class MiniBusinessService {
     private List<ArrangementResp> getDefaultArrange(){
         List<ArrangementResp> def=new ArrayList<>();
         Date today=new Date();
-        for(int i=0;i<9;i++){
+        for(int i=0;i<12;i++){
             ArrangementResp ar=new ArrangementResp();
             ar.setDate(DateUtils.formatDate(DateUtils.addDays(today,i)));
             ar.setBeforeName("上午");

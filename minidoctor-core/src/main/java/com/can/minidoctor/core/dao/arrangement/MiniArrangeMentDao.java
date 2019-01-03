@@ -23,7 +23,7 @@ public class MiniArrangeMentDao {
 
     public List<MinidoctorArrangement> getFutureArrangeMents(Date date,int hospital){
         MinidoctorArrangementExample example=new MinidoctorArrangementExample();
-        example.createCriteria().andWorkDateGreaterThan(new Date()).andWorkDateLessThan(DateUtils.addDays(new Date(),9)).andHostpitalEqualTo(Byte.valueOf(hospital+""));
+        example.createCriteria().andWorkDateGreaterThan(new Date()).andWorkDateLessThan(DateUtils.addDays(new Date(),12)).andHostpitalEqualTo(Byte.valueOf(hospital+""));
         return mapper.selectByExample(example);
     }
 

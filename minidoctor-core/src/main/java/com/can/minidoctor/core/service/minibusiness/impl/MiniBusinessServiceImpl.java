@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.can.minidoctor.api.aop.log.LogParams;
 import com.can.minidoctor.api.commons.base.Result;
 import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
+import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
 import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
 import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 
@@ -31,7 +32,7 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
 
     @Override
     @LogParams("获取排班")
-    public Result getFutureArrange(int hospital) {
+    public Result getFutureArrange(FutureArrangReq hospital) {
         return miniBusinessService.getFutureArrange(hospital);
     }
 
