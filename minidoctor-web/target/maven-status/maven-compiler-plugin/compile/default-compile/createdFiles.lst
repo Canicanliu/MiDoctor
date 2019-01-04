@@ -1,7 +1,0 @@
-com\can\minidoctor\web\utils\WebUtils.class
-com\can\minidoctor\web\WebApplication.class
-com\can\minidoctor\web\config\InterceptorConfig.class
-com\can\minidoctor\web\controller\MiniBusinessController.class
-com\can\minidoctor\web\interceptor\WxAuthInterceptor.class
-com\can\minidoctor\web\controller\ManagerController.class
-com\can\minidoctor\web\controller\WxMiniController.class
