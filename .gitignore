@@ -1,7 +1,8 @@
-/target/
+*/target/
 /.settings/
 .classpath
 .project
+.idea/workspace.xml
 .idea/*
 logs/
 *.class
