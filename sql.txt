@@ -8,7 +8,7 @@ CREATE TABLE `minidoctor_arrangement` (
   `after_supper` tinyint(4)  NULL COMMENT '晚班下人数',  
   `work_type` tinyint(4) not null comment '班制：0为白班，1为夜班',
   `hostpital` tinyint(4) not null comment '医院：0为红棉社康，1为怡景社康',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',  
+  `create_time` timestamp NOT NULL  COMMENT '创建时间',  
   PRIMARY KEY (`id`)  
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='排班表';
 

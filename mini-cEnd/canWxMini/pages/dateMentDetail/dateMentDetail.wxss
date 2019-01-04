@@ -7,6 +7,7 @@
 .infoDate{
   display: flex;
   flex-direction: column;  
+  margin-bottom: 10px;
 }
 .infoHead{  
   text-align: center;
@@ -18,7 +19,9 @@
   justify-content: space-between;
   margin: 5px 5px;
 }
-
+.btn{
+  margin-top: 10px;
+}
 .btCancel{
   width: 80%;
   background-color: cornflowerblue;

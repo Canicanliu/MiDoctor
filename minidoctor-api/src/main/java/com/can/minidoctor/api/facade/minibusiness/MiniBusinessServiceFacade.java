@@ -21,4 +21,6 @@ public interface MiniBusinessServiceFacade {
 
     public Result getDateDetail(DateDetailReq req);
 
+    public Result iniData();
+
 }

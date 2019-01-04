@@ -1,2 +1,7 @@
 E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\WebApplication.java
+E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\controller\ManagerController.java
+E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\config\InterceptorConfig.java
+E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\utils\WebUtils.java
+E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\interceptor\WxAuthInterceptor.java
 E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\controller\WxMiniController.java
+E:\midea\gitRepo\minidoctor\minidoctor-web\src\main\java\com\can\minidoctor\web\controller\MiniBusinessController.java

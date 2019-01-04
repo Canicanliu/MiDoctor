@@ -16,7 +16,7 @@
 }
 
 .grid_name{
-  margin: 5px 5px;
+  margin: 20px 10px;
 }
 
 .grids{

@@ -84,5 +84,7 @@ public class MiniArrangeMentDao {
         return !(value.byteValue() ==0);
     }
 
-
+    public int insertOne(MinidoctorArrangement one){
+        return mapper.insert(one);
+    }
 }

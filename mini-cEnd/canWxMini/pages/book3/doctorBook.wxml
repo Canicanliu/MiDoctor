@@ -1,0 +1,73 @@
+<view class="container">
+  
+    <image class='headbg' src='/resources/images/headbg.jpg'></image>
+  
+  <view class='list-hos' >
+    <text>选择医院 :  </text>
+    <text class='hospitalValue' bindtap='bindShowMsg'>{{hospital}}</text>
+    <image class='arrowdown' src='/resources/images/down.jpg'></image>
+    
+  </view>
+
+  <view class="select_box" wx:if="{{select}}">
+      <view class="select_one" bindtap="mySelect" data-name="红棉社康" data-value="0">红棉社康</view>
+      <view class="select_one" bindtap="mySelect" data-name="怡锦社康" data-value="1">怡锦社康</view>
+  </view>
+  
+
+  <view class='infoDate'>
+    <text class='dateText'>{{hospital}}近期排班</text>
+  </view>
+  <view class="grids">
+    <view class="grid" wx:for="{{arrangeMents}}" wx:key="name">
+      <text class="grid__date">{{item.date}}</text>
+      <view class="grid__bg">
+        <text class="grid__sub" bindtap='myDate' data-name='{{item.date}}:{{item.beforeName}}' data-value='{{item.before}}'>{{item.beforeName}}:{{item.before}}</text>
+        <text class="grid__sub" bindtap='myDate' data-name='{{item.date}}:{{item.afterName}}' data-value='{{item.after}}'>{{item.afterName}}:{{item.after}}</text>      
+          
+      </view>
+    </view>
+  </view> 
+
+  
+  <form class='infoForm' bindsubmit='submitDateMent'>
+    <view class='infoDate2'>
+      <text class='dateText2'>预约信息</text>
+    </view>
+      
+    <view class='infos'>
+      <view class='info'>
+      <text class='infoKey'>预约时间：</text>
+      <input class='inputInfo' value='{{selDate}}' name='date'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>预约医院：</text>
+      <input class='inputInfo' value='{{hospital}}' name='hospital'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>姓     名：  </text>
+      <input class='inputInfo' name='userName' value='张三丰'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>身份证： </text>
+      <input class='inputInfo' name='idNo' value='440229201812222611'></input>
+    </view>
+    <view class='info'>
+      <text class='infoKey'>手机号：</text>
+      <input class='inputInfo' name='mobile' value='13146868168'></input>
+    </view>
+    
+    </view>
+        
+
+
+    <view class='sline'></view>
+    <view class='btn'>
+      <button form-type='submit' class='btSure'>确定</button>
+    </view>
+  </form>
+
+
+
+
+</view>

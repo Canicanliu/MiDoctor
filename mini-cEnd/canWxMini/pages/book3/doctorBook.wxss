@@ -1,0 +1,209 @@
+.container{margin: 0;padding: 0;background-color:rgb(240, 246, 255);height: 100%;color: #333;}
+
+.headbg{
+  
+        height: 90PX;
+        width: 100%;
+        filter: blur(4PX);
+        position: absolute;
+        top: 0;
+}
+
+.list-hos {       
+    z-index: 2;
+    height: 60rpx;
+    border-radius: 10PX 10PX 10PX 10PX;
+    display: flex;     
+    flex-direction: row;    
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+}
+.arrowdown{
+  width: 20rpx;
+  height: 20rpx;
+  padding-left: 4px;
+}
+.infoDate{  
+  width: 95%;
+  margin: 10px 10px;
+  z-index: 2;
+  
+}
+.infoDate2{  
+  width: 95%;
+  margin: 5px 0;
+  z-index: 2;
+  
+}
+.dateText{
+    border: 2PX solid;
+    padding: 2PX 6PX;
+    font-size: 14PX;
+    border-radius: 18PX 4PX 4PX 0PX;
+    margin: 0 5PX;
+    
+  }
+.dateText2{
+    border: 2PX solid #444;
+    padding: 2PX 6PX;
+    font-size: 16PX;
+    border-radius: 18PX 4PX 4PX 0PX; 
+    background: #fff;   
+    color: #000;
+  }
+
+.grids{
+  margin: 10px 10px;
+}
+.grid {
+    position: relative;
+    float: left;    
+    padding: 5px 10px;
+    width: 33.33333333%;
+    box-sizing: border-box;
+    border:0.5px dashed;
+    border-radius: 4PX 4PX 4PX 4PX;
+}
+
+.grid:active {
+    background-color: #ECECEC;
+}  
+ 
+.grid__bg {
+    position: relative;
+    float: left;    
+    padding: 0px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+ 
+.grid__icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+}
+ 
+ 
+.grid__icon image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+ 
+.grid__icon + .wgrid__label {
+    margin-top: 5px;
+}
+ 
+ 
+.grid__date {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.grid__sub {
+    display: block;
+    margin: 1px 5px;
+    text-align: center;
+    font-weight: bold;
+    padding: 3px 0px;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-top: 1px;
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+}
+.grid__sub:last-child{
+  border-bottom-width:0;
+}
+.infoForm{  
+  width: 95%; 
+  margin: 0 10px;  
+}
+ 
+  .infos{  
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+
+ .info{  
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 5px 10px;
+}
+
+ 
+.select_box {
+    background-color: #eee;
+    padding: 0 10rpx;    
+    position: absolute;
+    top: 60rpx;
+    right: 5px;
+    z-index: 3;
+    overflow: hidden;
+    animation: myfirst 0.5s;
+    
+}
+
+ 
+ @keyframes myfirst {
+    from {
+        height: 0rpx;
+    }
+ 
+    to {
+        height: 140rpx;
+    }
+} 
+ 
+.select_one {
+    height: 60rpx;
+    line-height: 60rpx;
+    border-bottom: 1px solid #ccc;
+    font-size: 16px;
+}
+.line{
+  height: 60rpx;
+  border-top: 1px;  
+}
+
+.sline{
+  height: 20rpx;  
+}
+
+
+
+.infoKey{
+  width: 30%;
+  font-size:16px;
+}
+.inputInfo{
+  width: 70%;
+  border-bottom:1px solid #ccc;
+  font-size:16px;
+}
+
+.btn{   
+  width: 100%;
+  display: flex;
+  align-items: center;  
+}
+.btSure{
+  width: 80%;
+  background-color: cornflowerblue;
+  color: #fff;
+}
+.hospitalValue{
+  border-bottom: 1px solid black;
+}
+
+

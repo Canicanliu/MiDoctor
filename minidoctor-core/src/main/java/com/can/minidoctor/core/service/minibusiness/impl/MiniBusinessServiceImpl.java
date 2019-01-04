@@ -9,6 +9,7 @@ import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
 import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
+import com.can.minidoctor.core.service.minibusiness.IniDataService;
 import com.can.minidoctor.core.service.minibusiness.MiniBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,8 @@ import org.springframework.stereotype.Component;
 public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
     @Autowired
     MiniBusinessService miniBusinessService;
+    @Autowired
+    IniDataService iniDataService;
 
     @Override
     @LogParams("在线预约")
@@ -46,5 +49,10 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
     @LogParams("获取预约详情")
     public Result getDateDetail(DateDetailReq req) {
         return miniBusinessService.getDateDetail(req);
+    }
+
+    @Override
+    public Result iniData() {
+        return iniDataService.iniData();
     }
 }

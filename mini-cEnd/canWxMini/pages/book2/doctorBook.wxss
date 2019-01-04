@@ -46,7 +46,8 @@
   }
 
 .grids{
-  margin: 20px 10px;
+  margin: 30px 20px 10px 10px;
+  
 }
 .grid {
     position: relative;

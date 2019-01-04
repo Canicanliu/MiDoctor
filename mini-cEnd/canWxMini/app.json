@@ -1,6 +1,6 @@
 {
-  "pages": [
-    "pages/book2/doctorBook",
+  "pages": [    
+    "pages/book3/doctorBook",
     "pages/book/doctorBook",
     "pages/self/self",
     "pages/dateMentDetail/dateMentDetail",    
@@ -21,7 +21,7 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/book2/doctorBook",
+        "pagePath": "pages/book3/doctorBook",
         "iconPath": "resources/images/icon_xc_gray.png",
         "selectedIconPath": "resources/images/icon_xc_blue.png",
         "text": "健康有约"
