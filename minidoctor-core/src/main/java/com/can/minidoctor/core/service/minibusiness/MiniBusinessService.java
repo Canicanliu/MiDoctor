@@ -1,13 +1,11 @@
 package com.can.minidoctor.core.service.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
-import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
-import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
-import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
-import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
+import com.can.minidoctor.api.dto.request.miniwx.*;
 import com.can.minidoctor.api.dto.response.ArrangementResp;
 import com.can.minidoctor.api.dto.response.DateMentLisResp;
 import com.can.minidoctor.api.dto.response.wxmini.DateDetailResp;
+import com.can.minidoctor.api.utils.CanStringUtils;
 import com.can.minidoctor.api.utils.DateUtils;
 import com.can.minidoctor.api.utils.ResultUtils;
 import com.can.minidoctor.core.dao.arrangement.MiniArrangeMentDao;
@@ -114,6 +112,24 @@ public class MiniBusinessService {
         }
         return ResultUtils.getFailedResult(1,"error");
     }
+
+    public Result cancelAnArrangeMemt(CancelDatementReq req){
+        if(CanStringUtils.nullOrEmpty(req.getMdc_openId())||null==req.getDatementId()){
+            return ResultUtils.getFailedResult(1,"参数有误");
+        }
+        MinidoctorDatement datement=miniDateMentDao.getDatementById(req.getDatementId());
+        if(null==datement){
+            return ResultUtils.getFailedResult(1,"不存在的预约");
+        }
+        if(!req.getMdc_openId().equals(datement.getOpenId())){
+            return ResultUtils.getFailedResult(1,"只有本人才能取消预约");
+        }
+        datement.setEnabled(YesOrNotEnums.No.getCode());
+        datement.setUpdateTime(new Date());
+        miniDateMentDao.updateDatement(datement);
+        return ResultUtils.getOkResult("取消成功");
+    }
+
 
     public Result getFutureArrange(FutureArrangReq req){
 

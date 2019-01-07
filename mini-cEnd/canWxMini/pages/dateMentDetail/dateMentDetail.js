@@ -1,3 +1,4 @@
+import canHost from '../../config/interface.js'
 const app = getApp()
 Page({
 
@@ -6,6 +7,36 @@ Page({
    */
   data: {
     dateMent:{}
+  },
+
+  submitCancel:function(e){
+    let {
+      dateMentId
+    } = e.detail.value;
+
+    var that=this;
+    wx.request({
+      url: canHost.miniHost + canHost.cancelDate + 'sessionId=' + wx.getStorageSync("miniSessionId"),
+      method: "POST",
+      data: {
+        datementId: dateMentId        
+      },
+      success: function (result) {
+        console.log(result)
+        if (0 == result.data.code) {
+          wx.showToast({
+            title: '取消成功',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: result.data.msg,
+            duration: 5000
+          })
+        }
+        that.onLoad()
+      }
+    })
   },
 
   /**

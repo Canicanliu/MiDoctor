@@ -4,6 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.infoKey{
+  width: 26%;
+}
 .infoDate{
   display: flex;
   flex-direction: column;  

@@ -2,10 +2,7 @@ package com.can.minidoctor.web.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.can.minidoctor.api.aop.log.LogParams;
-import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
-import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
-import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
-import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
+import com.can.minidoctor.api.dto.request.miniwx.*;
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
 import com.can.minidoctor.api.facade.wxmini.WxMiniServiceFacade;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +28,13 @@ public class MiniBusinessController {
     public Object makeAnArrangeMemt(@RequestBody MakeAnArrangeReq req){
 
         return miniBusinessServiceFacade.makeAnArrangeMemt(req);
+    }
+
+    @RequestMapping("/cancelADate")
+    @LogParams("在线预约")
+    public Object cancelAnArrangeMemt(@RequestBody CancelDatementReq req){
+
+        return miniBusinessServiceFacade.cancelAnArrangeMemt(req);
     }
 
     @RequestMapping("/getMyDatements")

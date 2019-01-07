@@ -1,6 +1,6 @@
-<form class='infoForm' bindsubmit='submitDateMent'>
+<form class='infoForm' bindsubmit='submitCancel'>
     <view class='infoDate'>
-      <text class='infoHead'>预约信息：</text>
+      <text class='infoHead' name='dateMentId' value='{{dateMent.dateMentId}}'>预约信息：</text>
     </view>
     <view class='info'>
       <text class='infoKey'>预约时间：</text>      

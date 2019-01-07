@@ -38,11 +38,11 @@
     <view class='infos'>
       <view class='info'>
       <text class='infoKey'>预约时间：</text>
-      <input class='inputInfo' value='{{selDate}}' name='date'></input>
+      <input class='inputInfo ' disabled='true' value='{{selDate}}' name='date'></input>
     </view>
     <view class='info'>
       <text class='infoKey'>预约医院：</text>
-      <input class='inputInfo' value='{{hospital}}' name='hospital'></input>
+      <input class='inputInfo' disabled='true' value='{{hospital}}' name='hospital'></input>
     </view>
     <view class='info'>
       <text class='infoKey'>姓     名：  </text>

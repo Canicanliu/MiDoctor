@@ -41,7 +41,7 @@ Page({
     
     var that = this    
     wx.request({
-      url: canHost.miniHost +'wx/business/getFutureArrange?hospital='+value+'&sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost +canHost.futureArrangement+'hospital='+value+'&sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data: {
         hospital: value
@@ -89,7 +89,7 @@ Page({
     }
     var that=this
     wx.request({
-      url: canHost.miniHost +'wx/business/makeADate?sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost +canHost.makeADateUrl+'sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data:{
         workDate:date,
@@ -154,7 +154,7 @@ Page({
           console.log(res.code)
           var code = res.code
           wx.request({
-            url: canHost.miniHost+'wx/mini/doLogin?code=' + code,
+            url: canHost.miniHost+canHost.miniLogin+'code=' + code,
             method: "POST",
             success: function(result) {
               console.log(result)
@@ -171,7 +171,7 @@ Page({
     console.log("miniSessionId:" + wx.getStorageSync("miniSessionId"))
     var header;    
     wx.request({
-      url: canHost.miniHost +'wx/business/getFutureArrange?sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost + canHost.futureArrangement+'sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data:{
         hospital:value

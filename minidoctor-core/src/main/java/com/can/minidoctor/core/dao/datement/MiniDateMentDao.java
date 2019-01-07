@@ -3,6 +3,7 @@ package com.can.minidoctor.core.dao.datement;
 import com.can.minidoctor.core.dao.mapper.MinidoctorDatementMapper;
 import com.can.minidoctor.core.entity.MinidoctorDatement;
 import com.can.minidoctor.core.entity.MinidoctorDatementExample;
+import com.can.minidoctor.core.enums.YesOrNotEnums;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,8 +29,12 @@ public class MiniDateMentDao {
 
     public List<MinidoctorDatement> getDatementByOpenId(String openId){
         MinidoctorDatementExample example=new MinidoctorDatementExample();
-        example.createCriteria().andOpenIdEqualTo(openId);
+        example.createCriteria().andOpenIdEqualTo(openId).andEnabledEqualTo(YesOrNotEnums.Yes.getCode());
         List<MinidoctorDatement> res=mapper.selectByExample(example);
         return res;
+    }
+
+    public int updateDatement(MinidoctorDatement record){
+        return mapper.updateByPrimaryKey(record);
     }
 }

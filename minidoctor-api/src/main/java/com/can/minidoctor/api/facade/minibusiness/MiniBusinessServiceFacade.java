@@ -1,10 +1,7 @@
 package com.can.minidoctor.api.facade.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
-import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
-import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
-import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
-import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
+import com.can.minidoctor.api.dto.request.miniwx.*;
 
 /**
  * @Author: ltm
@@ -14,6 +11,8 @@ import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
 public interface MiniBusinessServiceFacade {
 
     public Result makeAnArrangeMemt(MakeAnArrangeReq req);
+
+    public Result cancelAnArrangeMemt(CancelDatementReq req);
 
     public Result getFutureArrange(FutureArrangReq hospital);
 

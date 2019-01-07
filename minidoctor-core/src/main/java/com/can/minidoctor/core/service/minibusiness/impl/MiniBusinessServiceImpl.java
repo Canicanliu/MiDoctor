@@ -3,10 +3,7 @@ package com.can.minidoctor.core.service.minibusiness.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.can.minidoctor.api.aop.log.LogParams;
 import com.can.minidoctor.api.commons.base.Result;
-import com.can.minidoctor.api.dto.request.miniwx.DateDetailReq;
-import com.can.minidoctor.api.dto.request.miniwx.FutureArrangReq;
-import com.can.minidoctor.api.dto.request.miniwx.GetDateListReq;
-import com.can.minidoctor.api.dto.request.miniwx.MakeAnArrangeReq;
+import com.can.minidoctor.api.dto.request.miniwx.*;
 
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
 import com.can.minidoctor.core.service.minibusiness.IniDataService;
@@ -31,6 +28,11 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
     @LogParams("在线预约")
     public Result makeAnArrangeMemt(MakeAnArrangeReq req) {
         return miniBusinessService.makeAnArrangeMemt(req);
+    }
+
+    @Override
+    public Result cancelAnArrangeMemt(CancelDatementReq req) {
+        return null;
     }
 
     @Override
