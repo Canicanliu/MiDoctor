@@ -1,5 +1,6 @@
 package com.can.minidoctor.core.common.http;
 
+import com.can.minidoctor.api.utils.JsonUtils;
 import org.apache.commons.codec.Charsets;
 import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
@@ -51,10 +52,18 @@ public class HttpClientService {
         return null;
     }
 
-    public String httpsPost(String path, Map<String,String> param) throws IOException {
-        HttpPost httpPost = new HttpPost(path);
-        HttpHost host = new HttpHost(httpPost.getURI().getHost(), 443,"https");
-        return new String(post(path,param,host),Charsets.UTF_8.name());
+    public String httpsPost(String path, Map<String,String> param) {
+        try{
+            LOGGER.info("post请求:{},参数:{}",path, JsonUtils.toJson(param));
+            HttpPost httpPost = new HttpPost(path);
+            HttpHost host = new HttpHost(httpPost.getURI().getHost(), 443,"https");
+            String result=new String(post(path,param,host),Charsets.UTF_8.name());
+            LOGGER.info("post请求:{},结果:{}",path, result);
+            return result;
+        }catch (Exception e){
+            LOGGER.error("请求{}异常,参数:{}",path, JsonUtils.toJson(param));
+            return null;
+        }
     }
 
     public String httpPost(String path, Map<String,String> param) throws IOException {

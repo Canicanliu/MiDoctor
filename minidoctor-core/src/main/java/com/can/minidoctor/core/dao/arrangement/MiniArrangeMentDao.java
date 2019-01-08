@@ -63,15 +63,27 @@ public class MiniArrangeMentDao {
 
     public boolean reduceStock(MinidoctorArrangement record,byte sectionType){
         if(SectionTypeEnums.beforeNoon.getCode()==sectionType){
-
             record.setBeforeNoon(Byte.valueOf(record.getBeforeNoon().intValue()-1+""));
-
         }else  if(SectionTypeEnums.afterNoon.getCode()==sectionType){
             record.setAfterNoon(Byte.valueOf(record.getAfterNoon().intValue()-1+""));
         }else if(SectionTypeEnums.beforeSupper.getCode()==sectionType){
             record.setBeforeSupper(Byte.valueOf(record.getBeforeSupper().intValue()-1+""));
         }else  if(SectionTypeEnums.afterSupper.getCode()==sectionType){
             record.setAfterSupper(Byte.valueOf(record.getAfterSupper().intValue()-1+""));
+        }
+        int cnt=mapper.updateByPrimaryKey(record);
+        return cnt==1;
+    }
+
+    public boolean addStock(MinidoctorArrangement record,byte sectionType){
+        if(SectionTypeEnums.beforeNoon.getCode()==sectionType){
+            record.setBeforeNoon(Byte.valueOf(record.getBeforeNoon().intValue()+1+""));
+        }else  if(SectionTypeEnums.afterNoon.getCode()==sectionType){
+            record.setAfterNoon(Byte.valueOf(record.getAfterNoon().intValue()+1+""));
+        }else if(SectionTypeEnums.beforeSupper.getCode()==sectionType){
+            record.setBeforeSupper(Byte.valueOf(record.getBeforeSupper().intValue()+1+""));
+        }else  if(SectionTypeEnums.afterSupper.getCode()==sectionType){
+            record.setAfterSupper(Byte.valueOf(record.getAfterSupper().intValue()+1+""));
         }
         int cnt=mapper.updateByPrimaryKey(record);
         return cnt==1;
@@ -86,5 +98,9 @@ public class MiniArrangeMentDao {
 
     public int insertOne(MinidoctorArrangement one){
         return mapper.insert(one);
+    }
+
+    public MinidoctorArrangement getArrangeMentById(Long id){
+        return mapper.selectByPrimaryKey(id);
     }
 }

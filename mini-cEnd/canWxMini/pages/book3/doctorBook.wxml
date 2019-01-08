@@ -30,7 +30,7 @@
   </view> 
 
   
-  <form class='infoForm' bindsubmit='submitDateMent'>
+  <form class='infoForm' bindsubmit='submitDateMent' report-submit='true'>
     <view class='infoDate2'>
       <text class='dateText2'>预约信息</text>
     </view>

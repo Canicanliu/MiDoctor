@@ -17,6 +17,7 @@ public class MakeAnArrangeReq extends BaseDto {
     private Byte enabled;
     private String hosptital;
 
+
     public String getHosptital() {
         return hosptital;
     }

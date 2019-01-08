@@ -31,7 +31,7 @@ public class MiniBusinessController {
     }
 
     @RequestMapping("/cancelADate")
-    @LogParams("在线预约")
+    @LogParams("取消预约")
     public Object cancelAnArrangeMemt(@RequestBody CancelDatementReq req){
 
         return miniBusinessServiceFacade.cancelAnArrangeMemt(req);

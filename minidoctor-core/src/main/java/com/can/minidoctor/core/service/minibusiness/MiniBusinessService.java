@@ -18,10 +18,13 @@ import com.can.minidoctor.core.enums.DigitalEnums;
 import com.can.minidoctor.core.enums.HospitalEnums;
 import com.can.minidoctor.core.enums.SectionTypeEnums;
 import com.can.minidoctor.core.enums.YesOrNotEnums;
+import com.can.minidoctor.core.service.wxmini.MessageSenderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +43,11 @@ public class MiniBusinessService {
     MiniDateMentDao miniDateMentDao;
     @Autowired
     MiniArrangeMentDao miniArrangeMentDao;
+
+    @Value("${wx.miniprogram.dateTemplateId}")
+    String dateTemplateId;
+    @Autowired
+    MessageSenderService messageSenderService;
 
     public Result getDateDetail(DateDetailReq req){
         MinidoctorDatement md=miniDateMentDao.getDatementById(req.getDateMentId());
@@ -108,11 +116,22 @@ public class MiniBusinessService {
         minidoctorDatement.setHostpital(HospitalEnums.getCodeByName(req.getHosptital()));
         int cnt=miniDateMentDao.intsertOneDatement(minidoctorDatement);
         if(cnt==1){
+            MessageData messageData=new MessageData();
+            MessageDataItem keyword1=new MessageDataItem();
+            keyword1.setValue(req.getName());
+            MessageDataItem keyword2=new MessageDataItem();
+            keyword2.setValue(req.getHosptital());
+            MessageDataItem keyword3=new MessageDataItem();
+            keyword3.setValue(req.getWorkDate());
+            MessageDataItem keyword4=new MessageDataItem();
+            keyword4.setValue(req.getMobile());
+            messageSenderService.sendMessageByOpenId(minidoctorDatement.getOpenId(),req.getFormId(),dateTemplateId,"",messageData);
             return ResultUtils.getOkResult(true);
+
         }
         return ResultUtils.getFailedResult(1,"error");
     }
-
+    @Transactional(rollbackFor = Exception.class)
     public Result cancelAnArrangeMemt(CancelDatementReq req){
         if(CanStringUtils.nullOrEmpty(req.getMdc_openId())||null==req.getDatementId()){
             return ResultUtils.getFailedResult(1,"参数有误");
@@ -124,9 +143,19 @@ public class MiniBusinessService {
         if(!req.getMdc_openId().equals(datement.getOpenId())){
             return ResultUtils.getFailedResult(1,"只有本人才能取消预约");
         }
+        if(YesOrNotEnums.No.getCode()==datement.getEnabled()){
+            return ResultUtils.getFailedResult(1,"无需重复取消");
+        }
         datement.setEnabled(YesOrNotEnums.No.getCode());
         datement.setUpdateTime(new Date());
+
+        MinidoctorArrangement arrangement=miniArrangeMentDao.getArrangeMentById(datement.getArrangeId());
+        boolean ret=miniArrangeMentDao.addStock(arrangement,SectionTypeEnums.getCodeByName(datement.getTimeSection()));
+        if(!ret){
+            return ResultUtils.getFailedResult(1,"取消失败");
+        }
         miniDateMentDao.updateDatement(datement);
+
         return ResultUtils.getOkResult("取消成功");
     }
 

@@ -32,7 +32,7 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
 
     @Override
     public Result cancelAnArrangeMemt(CancelDatementReq req) {
-        return null;
+        return miniBusinessService.cancelAnArrangeMemt(req);
     }
 
     @Override
