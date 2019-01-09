@@ -31,8 +31,9 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
     }
 
     @Override
+    @LogParams("取消预约")
     public Result cancelAnArrangeMemt(CancelDatementReq req) {
-        return null;
+        return miniBusinessService.cancelAnArrangeMemt(req);
     }
 
     @Override

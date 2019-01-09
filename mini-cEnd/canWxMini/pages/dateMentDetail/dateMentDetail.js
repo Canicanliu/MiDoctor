@@ -9,7 +9,7 @@ Page({
     dateMent:{}
   },
 
-  submitCancel:function(e){
+  submitCancel:function(e){    
     let {
       dateMentId
     } = e.detail.value;
@@ -33,8 +33,7 @@ Page({
             title: result.data.msg,
             duration: 5000
           })
-        }
-        that.onLoad()
+        }        
       }
     })
   },

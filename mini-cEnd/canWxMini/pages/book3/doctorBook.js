@@ -73,6 +73,7 @@ Page({
   },
   submitDateMent: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    var formId = e.detail.formId    
     let {
       userName,
       date,
@@ -96,7 +97,8 @@ Page({
         name:userName,
         identification:idNo,
         mobile:mobile,
-        hosptital: hospital
+        hosptital: hospital,
+        formId:formId
       },
       success: function (result) {
         console.log(result)   

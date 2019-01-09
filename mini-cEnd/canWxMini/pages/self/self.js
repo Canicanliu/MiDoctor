@@ -53,7 +53,6 @@ Page({
       }
     })
 
-
   },
   bindViewEvent: function (e) {
     app.process(this, e)
@@ -94,6 +93,24 @@ Page({
         wx.navigateTo({
           url: '../dateMentDetail/dateMentDetail?current=' + JSON.stringify(result.data.data)
         })
+      }
+    })
+  },
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
+    var that=this;
+    wx.request({
+      url: canHost.miniHost + canHost.getMyDateMents + 'sessionId=' + wx.getStorageSync("miniSessionId"),
+      method: "POST",
+      data: {},
+      success: function (result) {
+        that.setData({
+          dateMentInfos: result.data.data
+        })
+        console.log(result.data.data)
+
       }
     })
   }

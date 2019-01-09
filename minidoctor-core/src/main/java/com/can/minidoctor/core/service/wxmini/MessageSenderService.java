@@ -2,13 +2,18 @@ package com.can.minidoctor.core.service.wxmini;
 
 
 import com.can.minidoctor.api.aop.log.LogParams;
+import com.can.minidoctor.api.commons.base.Result;
 import com.can.minidoctor.api.dto.request.miniwx.MessageData;
 import com.can.minidoctor.api.dto.request.miniwx.WxMessageSendReq;
 import com.can.minidoctor.api.dto.response.wxmini.MessageResp;
+import com.can.minidoctor.api.utils.JsonUtils;
+import com.can.minidoctor.api.utils.ResultUtils;
+import com.can.minidoctor.core.common.http.HttpClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -17,21 +22,19 @@ import java.util.Map;
  * @Descripion:
  * @Date: Created in 16:17 2018-11-2
  */
+@Component
 public class MessageSenderService {
 
     private static final Logger LOGGER=LoggerFactory.getLogger(MessageSenderService.class);
     public static final int ERROR40001 = 40001;
 
-    @Value("${proxy_host}")
-    String proxyHost;
-
-    @Value("${proxy_port}")
-    String proxyPort;
-
-    @Value("${wx_sendMessageUrl}")
+    @Value("${wx.miniprogram.sendWxTemplateNotice}")
     String sendWxMessageUrl;
+    @Autowired
+    WxMiniService wxMiniService;
 
-
+    @Autowired
+    HttpClientService clientService;
 
     /**
      * 给用户发送小程序模板消息
@@ -57,6 +60,13 @@ public class MessageSenderService {
      * @return
      */
     public MessageResp sendAMessageByWx(WxMessageSendReq sendReq){
+        Result result=wxMiniService.getMiniAccessToken();
+        if(ResultUtils.OK==result.getCode()){
+            String accessToken=result.getData().toString();
+            Map<String,String> param= JsonUtils.toObject(JsonUtils.toJson(sendReq),Map.class);
+            String resp=clientService.httpsPost(sendWxMessageUrl+accessToken,param);
+            return JsonUtils.toObject(resp,MessageResp.class);
+        }
         return null;
     }
 

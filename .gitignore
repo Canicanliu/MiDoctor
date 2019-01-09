@@ -1,4 +1,4 @@
-*/target/
+*/target/*
 /.settings/
 .classpath
 .project
@@ -6,3 +6,4 @@
 .idea/*
 logs/
 *.class
+.idea/workspace.xml

@@ -1,12 +1,15 @@
 package com.can.minidoctor.core.common.http;
 
+import com.can.minidoctor.api.utils.JsonUtils;
 import org.apache.commons.codec.Charsets;
+import org.apache.http.Consts;
 import org.apache.http.HttpHost;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,10 +55,18 @@ public class HttpClientService {
         return null;
     }
 
-    public String httpsPost(String path, Map<String,String> param) throws IOException {
-        HttpPost httpPost = new HttpPost(path);
-        HttpHost host = new HttpHost(httpPost.getURI().getHost(), 443,"https");
-        return new String(post(path,param,host),Charsets.UTF_8.name());
+    public String httpsPost(String path, Map<String,String> param) {
+        try{
+            LOGGER.info("post请求:{},参数:{}",path, JsonUtils.toJson(param));
+            HttpPost httpPost = new HttpPost(path);
+            HttpHost host = new HttpHost(httpPost.getURI().getHost(), 443,"https");
+            String result=new String(post(path,param,host),Charsets.UTF_8.name());
+            LOGGER.info("post请求:{},结果:{}",path, result);
+            return result;
+        }catch (Exception e){
+            LOGGER.error("请求{}异常,参数:{}",path, JsonUtils.toJson(param),e);
+            return null;
+        }
     }
 
     public String httpPost(String path, Map<String,String> param) throws IOException {
@@ -70,12 +82,15 @@ public class HttpClientService {
         httpPost.addHeader("Connection", "close");
         httpPost.addHeader("X-Req-Id", MDC.get("REQUEST_ID") );
         if(param.size()>0){
-            List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-            for(String key :param.keySet()){
-                formparams.add(new BasicNameValuePair(key, param.get(key)));
+            // 设置参数编码字符集
+            Charset charset = null;
+            String encoding = (String)param.get("charset");
+            if (encoding != null) {
+                charset = Charset.forName(encoding);
             }
-            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, Charsets.UTF_8.name());
-            httpPost.setEntity(entity);
+
+            StringEntity jsonParams = new StringEntity(JsonUtils.toJson(param),charset!=null?charset: Consts.UTF_8);
+            httpPost.setEntity(jsonParams);
         }
         return caller.execute(host, httpPost, HttpClientContext.create());
     }
