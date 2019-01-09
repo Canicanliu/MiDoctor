@@ -45,6 +45,16 @@ public class MiniBusinessService {
 
     @Value("${wx.miniprogram.dateTemplateId}")
     String dateTemplateId;
+
+    @Value("${wx.miniprogram.cacelDateTeplateId}")
+    String cacelDateTeplateId;
+
+    @Value("${wx.miniprogram.detailPage}")
+    String detailPage;
+
+    @Value("${wx.miniprogram.indexPage}")
+    String indexPage;
+
     @Autowired
     MessageSenderService messageSenderService;
 
@@ -115,20 +125,22 @@ public class MiniBusinessService {
         minidoctorDatement.setHostpital(HospitalEnums.getCodeByName(req.getHosptital()));
         int cnt=miniDateMentDao.intsertOneDatement(minidoctorDatement);
         if(cnt==1){
-            MessageData messageData=new MessageData();
-            MessageDataItem keyword1=new MessageDataItem();
-            keyword1.setValue(req.getName());
-            MessageDataItem keyword2=new MessageDataItem();
-            keyword2.setValue(req.getHosptital());
-            MessageDataItem keyword3=new MessageDataItem();
-            keyword3.setValue(req.getWorkDate());
-            MessageDataItem keyword4=new MessageDataItem();
-            keyword4.setValue(req.getMobile());
-            messageData.setKeyword1(keyword1);
-            messageData.setKeyword2(keyword2);
-            messageData.setKeyword3(keyword3);
-            messageData.setKeyword4(keyword4);
-            messageSenderService.sendMessageByOpenId(minidoctorDatement.getOpenId(),req.getFormId(),dateTemplateId,"",messageData);
+            if(!CanStringUtils.nullOrEmpty(req.getFormId())) {
+                MessageData messageData = new MessageData();
+                MessageDataItem keyword1 = new MessageDataItem();
+                keyword1.setValue(req.getName());
+                MessageDataItem keyword2 = new MessageDataItem();
+                keyword2.setValue(req.getHosptital());
+                MessageDataItem keyword3 = new MessageDataItem();
+                keyword3.setValue(req.getWorkDate());
+                MessageDataItem keyword4 = new MessageDataItem();
+                keyword4.setValue(req.getMobile());
+                messageData.setKeyword1(keyword1);
+                messageData.setKeyword2(keyword2);
+                messageData.setKeyword3(keyword3);
+                messageData.setKeyword4(keyword4);
+                messageSenderService.sendMessageByOpenId(minidoctorDatement.getOpenId(), req.getFormId(), dateTemplateId, detailPage + minidoctorDatement.getId(), messageData);
+            }
             return ResultUtils.getOkResult(true);
 
         }
@@ -158,6 +170,22 @@ public class MiniBusinessService {
             return ResultUtils.getFailedResult(1,"取消失败");
         }
         miniDateMentDao.updateDatement(datement);
+        if(!CanStringUtils.nullOrEmpty(req.getFormId())){
+            MessageData messageData=new MessageData();
+            MessageDataItem keyword1=new MessageDataItem();
+            keyword1.setValue(datement.getName());
+            MessageDataItem keyword2=new MessageDataItem();
+            keyword2.setValue(HospitalEnums.getNameByCode(datement.getHostpital()));
+            MessageDataItem keyword3=new MessageDataItem();
+            keyword3.setValue(DateUtils.getDateStr(datement.getWorkDate(),"yyyy-MM-dd"));
+            MessageDataItem keyword4=new MessageDataItem();
+            keyword4.setValue(DateUtils.getDateStr(new Date(),"yyyy-MM-dd hh:mm:ss"));
+            messageData.setKeyword1(keyword1);
+            messageData.setKeyword2(keyword2);
+            messageData.setKeyword3(keyword3);
+            messageData.setKeyword4(keyword4);
+            messageSenderService.sendMessageByOpenId(datement.getOpenId(),req.getFormId(),cacelDateTeplateId,indexPage,messageData);
+        }
 
         return ResultUtils.getOkResult("取消成功");
     }

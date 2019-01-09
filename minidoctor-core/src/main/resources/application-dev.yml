@@ -20,7 +20,7 @@ spring:
       #druid相关配置
       druid:
         #监控统计拦截的filters
-        url: jdbc:mysql://127.0.0.1:3506/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        url: jdbc:mysql://203.195.129.169:3506/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
         username: root
         password: root
 
@@ -50,6 +50,7 @@ wx:
     appId: wxc50c61e3025c752c
     appSecret: 76952bd9e9033f84f074cd5728f1bb50
     dateTemplateId: WL0QxTcLW1rOLSYv7rS_C55cPG8n2YacWniKP-vR5Pw
+    cacelDateTeplateId: 47g2Q6kbz_sxGqJ-2uLBHk1alJv3KN_zsnnRB6YX5-s
 
 
 

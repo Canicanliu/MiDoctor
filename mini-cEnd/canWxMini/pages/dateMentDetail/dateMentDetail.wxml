@@ -1,4 +1,4 @@
-<form class='infoForm' bindsubmit='submitCancel'>
+<form class='infoForm' bindsubmit='submitCancel' report-submit='true'>
     <view class='infoDate'>
       <text class='infoHead' name='dateMentId' value='{{dateMent.dateId}}'>预约信息：</text>
       <input class='inVisiable'  name='dateMentId' value='{{dateMent.dateId}}' ></input>
@@ -22,7 +22,8 @@
     <view class='info'>
       <text class='infoKey'>手机号:  </text>
       <input class='inputInfo' disabled='true' value='{{dateMent.mobile}}'></input>
-    </view>   
+    </view>
+       
     <view class='btn'>
       <button form-type='submit' class='btCancel'>取消</button>
     </view>

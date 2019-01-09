@@ -29,7 +29,9 @@ public class MiniDateMentDao {
 
     public List<MinidoctorDatement> getDatementByOpenId(String openId){
         MinidoctorDatementExample example=new MinidoctorDatementExample();
-        example.createCriteria().andOpenIdEqualTo(openId).andEnabledEqualTo(YesOrNotEnums.Yes.getCode());
+        MinidoctorDatementExample.Criteria criteria= example.createCriteria();
+        criteria.andOpenIdEqualTo(openId).andEnabledEqualTo(YesOrNotEnums.Yes.getCode());
+        example.setOrderByClause("create_time desc");
         List<MinidoctorDatement> res=mapper.selectByExample(example);
         return res;
     }

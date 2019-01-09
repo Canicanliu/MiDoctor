@@ -10,6 +10,7 @@ Page({
   },
 
   submitCancel:function(e){    
+    var formId = e.detail.formId
     let {
       dateMentId
     } = e.detail.value;
@@ -19,7 +20,8 @@ Page({
       url: canHost.miniHost + canHost.cancelDate + 'sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data: {
-        datementId: dateMentId        
+        datementId: dateMentId,
+        formId: formId        
       },
       success: function (result) {
         console.log(result)
@@ -43,9 +45,19 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.current)
-    this.setData({      
-      dateMent: JSON.parse(options.current)
+    var that=this
+    wx.request({
+      url: canHost.miniHost + canHost.dateDetail + 'sessionId=' + wx.getStorageSync("miniSessionId"),
+      method: "POST",
+      data: { dateMentId: options.current },
+      success: function (result) {
+        console.log(result.data.data)
+        that.setData({
+          dateMent: result.data.data
+        })
+      }
     })
+    
   },
 
   /**

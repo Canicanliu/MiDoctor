@@ -5,6 +5,7 @@ const makeADateUrl ="wx/business/makeADate?"
 const getMyDateMents ="wx/business/getMyDatements?"
 const dateDetail ="wx/business/getDateDetail?"
 const cancelDate ="wx/business/cancelADate?"
+
 export default
 {
     miniHost,

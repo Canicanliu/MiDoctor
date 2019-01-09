@@ -7,3 +7,5 @@ wx:
     accessTokenUrl: https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
     getWXACodeUnlimit: https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=
     sendWxTemplateNotice: https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=
+    detailPage: pages/dateMentDetail/dateMentDetail?current=
+    indexPage: pages/book3/doctorBook

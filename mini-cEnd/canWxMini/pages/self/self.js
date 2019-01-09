@@ -84,17 +84,9 @@ Page({
   //获取详情
   getDetail:function(e){
     var value = e.currentTarget.dataset.value
-    wx.request({
-      url: canHost.miniHost +canHost.dateDetail+'sessionId=' + wx.getStorageSync("miniSessionId"),
-      method: "POST",
-      data: { dateMentId:value},
-      success: function (result) {        
-        console.log(result.data.data)
-        wx.navigateTo({
-          url: '../dateMentDetail/dateMentDetail?current=' + JSON.stringify(result.data.data)
-        })
-      }
-    })
+    wx.navigateTo({
+      url: '../dateMentDetail/dateMentDetail?current=' + value
+    })    
   },
   /**
  * 生命周期函数--监听页面显示
