@@ -37,6 +37,8 @@ public class WxAuthInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) {
+		String requetId="req"+System.currentTimeMillis();
+		MdcUtils.put(MdcUtils.requestId,requetId);
 		Result ret=wxMiniService.isSessionValid(request.getParameter("sessionId"));
 		if(ResultUtils.OK!=ret.getCode()){
 			LOGGER.error("session校验不通过");

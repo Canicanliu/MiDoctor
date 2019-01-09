@@ -11,6 +11,8 @@ public class MdcUtils {
 
 	public static final String OPENID="openId";
 
+	public static final String requestId="requestId";
+
 
 	/**
 	 * 清空MDC数据

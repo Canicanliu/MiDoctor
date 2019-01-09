@@ -24,7 +24,7 @@ public class JedisClusterService {
     private static final Logger LOGGER = LoggerFactory.getLogger(JedisClusterService.class);
 
     @Autowired
-    private JedisCluster jedisCluster;
+    private Jedis jedisCluster;
     private int timeOut = 60*60*24*30;//默认超时时间
 
 
