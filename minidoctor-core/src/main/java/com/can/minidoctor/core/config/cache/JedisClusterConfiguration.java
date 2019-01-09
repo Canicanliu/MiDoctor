@@ -18,40 +18,40 @@ public class JedisClusterConfiguration {
 
 	@Bean
 	public Jedis getJedis(){
-		Jedis jedis=new Jedis("127.0.0.1",6379);
+		Jedis jedis=new Jedis("203.195.129.169",6379);
 		return jedis;
 	}
 	
-//	@Bean
-//	public JedisCluster getJedisCluster(){
-//		LOGGER.info("init jediscluster start");
-//		JedisCluster jedisCluster = null;
-//		try{
-//			// 添加集群的服务节点Set集合
-//			Set<HostAndPort> hostAndPortsSet = new HashSet<HostAndPort>();
-//			// 添加节点
-//			hostAndPortsSet.add(new HostAndPort("127.0.0.1", 6379));
-//			jedisCluster = new JedisCluster(hostAndPortsSet);
-//		}catch (Exception e){
-//			LOGGER.error("init jedis exception",e);
-//		}
+	@Bean
+	public JedisCluster getJedisCluster(){
+		LOGGER.info("init jediscluster start");
+		JedisCluster jedisCluster = null;
+		try{
+			// 添加集群的服务节点Set集合
+			Set<HostAndPort> hostAndPortsSet = new HashSet<HostAndPort>();
+			// 添加节点
+			hostAndPortsSet.add(new HostAndPort("203.195.129.169", 6379));
+			jedisCluster = new JedisCluster(hostAndPortsSet);
+		}catch (Exception e){
+			LOGGER.error("init jedis exception",e);
+		}
+
+
+//		// Jedis连接池配置
+//		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+//		// 最大空闲连接数, 默认8个
 //
-//
-////		// Jedis连接池配置
-////		JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-////		// 最大空闲连接数, 默认8个
-////
-////		// 最大连接数, 默认8个
-////		jedisPoolConfig.setMaxTotal(500);
-////		//最小空闲连接数, 默认0
-////		jedisPoolConfig.setMinIdle(0);
-////		// 获取连接时的最大等待毫秒数(如果设置为阻塞时BlockWhenExhausted),如果超时就抛异常, 小于零:阻塞不确定的时间,  默认-1
-////		jedisPoolConfig.setMaxWaitMillis(2000); // 设置2秒
-////		//对拿到的connection进行validateObject校验
-////		jedisPoolConfig.setTestOnBorrow(true);
-//
-//		LOGGER.info("init jediscluster success");
-//		return jedisCluster;
-//	}
+//		// 最大连接数, 默认8个
+//		jedisPoolConfig.setMaxTotal(500);
+//		//最小空闲连接数, 默认0
+//		jedisPoolConfig.setMinIdle(0);
+//		// 获取连接时的最大等待毫秒数(如果设置为阻塞时BlockWhenExhausted),如果超时就抛异常, 小于零:阻塞不确定的时间,  默认-1
+//		jedisPoolConfig.setMaxWaitMillis(2000); // 设置2秒
+//		//对拿到的connection进行validateObject校验
+//		jedisPoolConfig.setTestOnBorrow(true);
+
+		LOGGER.info("init jediscluster success");
+		return jedisCluster;
+	}
 	
 }

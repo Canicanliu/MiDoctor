@@ -6,8 +6,8 @@ spring:
       application:            #应用配置，用于配置当前应用信息，不管该应用是提供者还是消费者。
         name: minidoctor-core
       registry:                 #注册中心配置，用于配置连接注册中心相关信息。
-        address: zookeeper://localhost:2181
-        group: dev
+        address: zookeeper://203.195.129.169:2181
+        group: aa
       protocol:     #协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受。
         name: dubbo
         port: 20110
