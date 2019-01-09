@@ -10,9 +10,9 @@ import com.can.minidoctor.api.utils.DateUtils;
 import com.can.minidoctor.api.utils.ResultUtils;
 import com.can.minidoctor.core.dao.arrangement.MiniArrangeMentDao;
 import com.can.minidoctor.core.dao.datement.MiniDateMentDao;
-import com.can.minidoctor.core.dao.mapper.MinidoctorDatementMapper;
+
 import com.can.minidoctor.core.entity.MinidoctorArrangement;
-import com.can.minidoctor.core.entity.MinidoctorArrangementExample;
+
 import com.can.minidoctor.core.entity.MinidoctorDatement;
 import com.can.minidoctor.core.enums.DigitalEnums;
 import com.can.minidoctor.core.enums.HospitalEnums;
@@ -24,7 +24,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -125,13 +124,17 @@ public class MiniBusinessService {
             keyword3.setValue(req.getWorkDate());
             MessageDataItem keyword4=new MessageDataItem();
             keyword4.setValue(req.getMobile());
+            messageData.setKeyword1(keyword1);
+            messageData.setKeyword2(keyword2);
+            messageData.setKeyword3(keyword3);
+            messageData.setKeyword4(keyword4);
             messageSenderService.sendMessageByOpenId(minidoctorDatement.getOpenId(),req.getFormId(),dateTemplateId,"",messageData);
             return ResultUtils.getOkResult(true);
 
         }
         return ResultUtils.getFailedResult(1,"error");
     }
-    @Transactional(rollbackFor = Exception.class)
+
     public Result cancelAnArrangeMemt(CancelDatementReq req){
         if(CanStringUtils.nullOrEmpty(req.getMdc_openId())||null==req.getDatementId()){
             return ResultUtils.getFailedResult(1,"参数有误");

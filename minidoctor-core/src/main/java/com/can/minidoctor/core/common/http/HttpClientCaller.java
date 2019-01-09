@@ -100,9 +100,6 @@ public class HttpClientCaller {
             if (response != null) {
                 response.close();
             }
-            if (client != null) {
-                client.close();
-            }
         }
         throw new IOException("unable to get response from host correctly");
     }

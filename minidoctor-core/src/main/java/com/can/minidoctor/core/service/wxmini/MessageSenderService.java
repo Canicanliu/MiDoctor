@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  * @Descripion:
  * @Date: Created in 16:17 2018-11-2
  */
+@Component
 public class MessageSenderService {
 
     private static final Logger LOGGER=LoggerFactory.getLogger(MessageSenderService.class);
