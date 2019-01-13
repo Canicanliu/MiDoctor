@@ -60,7 +60,7 @@
     position: relative;
     float: left;    
     padding: 5px 10px;
-    width: 33.33333333%;
+    width: 33.3333%;
     box-sizing: border-box;
     border:0.5px dashed;
     border-radius: 4PX 4PX 4PX 4PX;
@@ -103,6 +103,7 @@
     font-size: 12px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    background-color: goldenrod;
     overflow: hidden;
 }
 

@@ -3,6 +3,7 @@ package com.can.minidoctor.core.service.minibusiness.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.can.minidoctor.api.aop.log.LogParams;
 import com.can.minidoctor.api.commons.base.Result;
+import com.can.minidoctor.api.dto.BaseDto;
 import com.can.minidoctor.api.dto.request.miniwx.*;
 
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
@@ -57,5 +58,11 @@ public class MiniBusinessServiceImpl implements MiniBusinessServiceFacade {
     @Override
     public Result iniData() {
         return iniDataService.iniData();
+    }
+
+    @Override
+    @LogParams("获取用户信息")
+    public Result getUserInfo(BaseDto req) {
+        return miniBusinessService.getUserInfo(req);
     }
 }

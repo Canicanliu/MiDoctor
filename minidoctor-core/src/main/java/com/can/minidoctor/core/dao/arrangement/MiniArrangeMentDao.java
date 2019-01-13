@@ -21,9 +21,9 @@ public class MiniArrangeMentDao {
     @Autowired
     MinidoctorArrangementMapper mapper;
 
-    public List<MinidoctorArrangement> getFutureArrangeMents(Date date,int hospital){
+    public List<MinidoctorArrangement> getFutureArrangeMents(Date date,int hospital,int amount){
         MinidoctorArrangementExample example=new MinidoctorArrangementExample();
-        example.createCriteria().andWorkDateGreaterThan(new Date()).andWorkDateLessThan(DateUtils.addDays(new Date(),12)).andHostpitalEqualTo(Byte.valueOf(hospital+""));
+        example.createCriteria().andWorkDateGreaterThanOrEqualTo(DateUtils.addDays(new Date(),-1)).andWorkDateLessThan(DateUtils.addDays(new Date(),amount)).andHostpitalEqualTo(Byte.valueOf(hospital+""));
         return mapper.selectByExample(example);
     }
 

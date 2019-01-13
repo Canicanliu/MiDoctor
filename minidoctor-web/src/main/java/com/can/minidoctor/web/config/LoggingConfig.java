@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 
 
-@Configuration
+
 public class LoggingConfig {
 
     private final Logger log = LoggerFactory.getLogger(LoggingConfig.class);
@@ -26,7 +26,7 @@ public class LoggingConfig {
 
     private String pre="D:\\logs\\";
 
-    @Bean
+
     public LoggerContext getLoggerContext(){
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
         addLogstashAppender(context);

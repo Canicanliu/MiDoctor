@@ -25,4 +25,6 @@ public class ManagerController {
     public Object initData(){
         return miniBusinessServiceFacade.iniData();
     }
+
+
 }

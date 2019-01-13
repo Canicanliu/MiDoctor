@@ -14,6 +14,15 @@ public class DateDetailResp extends BaseDto {
     private String identification;
     private String mobile;
     private Long dateId;
+    private int admin;
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
 
     public String getWorkDate() {
         return workDate;

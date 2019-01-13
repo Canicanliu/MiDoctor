@@ -13,7 +13,17 @@ public class BaseDto implements Serializable {
     protected String mdc_openId;
     protected String mdc_requestId;
 
+    protected String mdc_sessionId;
+
     protected String formId;
+
+    public String getMdc_sessionId() {
+        return mdc_sessionId;
+    }
+
+    public void setMdc_sessionId(String mdc_sessionId) {
+        this.mdc_sessionId = mdc_sessionId;
+    }
 
     public String getFormId() {
         return formId;

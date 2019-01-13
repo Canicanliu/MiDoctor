@@ -18,11 +18,11 @@ public class JedisClusterConfiguration {
 
 	@Bean
 	public Jedis getJedis(){
-		Jedis jedis=new Jedis("203.195.129.169",6379);
+		Jedis jedis=new Jedis("127.0.0.1",6379);
 		return jedis;
 	}
 	
-	@Bean
+	/*@Bean
 	public JedisCluster getJedisCluster(){
 		LOGGER.info("init jediscluster start");
 		JedisCluster jedisCluster = null;
@@ -52,6 +52,6 @@ public class JedisClusterConfiguration {
 
 		LOGGER.info("init jediscluster success");
 		return jedisCluster;
-	}
+	}*/
 	
 }

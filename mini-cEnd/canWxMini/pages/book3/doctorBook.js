@@ -1,16 +1,18 @@
 import canHost from '../../config/interface.js'
+import { loginWx, loginWxWithAuth } from '../../config/interface.js'
 const app = getApp()
 Page({
-  data: {
+  data: {    
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     select: false,
     hospital: '红棉社康',
     hospitalValue:0,
+    amount:12,
     selDate: '',
     arrangeMents: [
-      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
+      { date: "2019-01-03", beforeName: "08:30-10:30", before: "未排班", afterName: "14:30-16:30", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
@@ -44,7 +46,8 @@ Page({
       url: canHost.miniHost +canHost.futureArrangement+'hospital='+value+'&sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data: {
-        hospital: value
+        hospital: value,
+        amount:12
       },
       success: function(result) {
         that.setData({
@@ -116,10 +119,6 @@ Page({
         that.onLoad()     
       }
     })
-
-
-    
-
   },
   onLoad: function() {
     console.log('onLoad')
@@ -149,41 +148,55 @@ Page({
         }
       })
     }
+    //获得dialog组件
+    this.dialog = this.selectComponent("#dialog");
     console.log(app.globalData.userInfo)
-    if (wx.getStorageSync("miniSessionId") == '') {
-      wx.login({
-        success: function(res) {
-          console.log(res.code)
-          var code = res.code
-          wx.request({
-            url: canHost.miniHost+canHost.miniLogin+'code=' + code,
-            method: "POST",
-            success: function(result) {
-              console.log(result)
-              wx.setStorageSync("miniSessionId", result.data.data)
-            }
-          })
-        }
-      })
+    if (wx.getStorageSync("miniSessionId")) { 
+      this.getFuture(this)
     }
-
-    var that = this
-    var value=that.data.hospitalValue
+    else {
+      this.showDialog();
+    }
+  },
+  getFuture:function(that){
+    var value = that.data.hospitalValue
     console.log("hospitalValue:" + value)
     console.log("miniSessionId:" + wx.getStorageSync("miniSessionId"))
-    var header;    
+    var header;
     wx.request({
-      url: canHost.miniHost + canHost.futureArrangement+'sessionId=' + wx.getStorageSync("miniSessionId"),
+      url: canHost.miniHost + canHost.futureArrangement + 'sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
-      data:{
-        hospital:value
+      data: {
+        hospital: value,
+        amount: 12
       },
-      success: function(result) {
+      success: function (result) {
         console.log(result)
         that.setData({
           arrangeMents: result.data.data
         })
       }
     })
+  },
+  onReady: function () {
+    
+    
+  },
+
+  showDialog: function () {
+    this.dialog.showDialog();
+  },
+
+  confirmEvent: function () {
+    this.dialog.hideDialog();
+  },
+
+  bindGetUserInfo: function (e) {    
+    console.log(e.detail)
+    loginWxWithAuth(this, app, e.detail,this.getFuture)    
+  },
+  onShow: function () {
+    this.getFuture(this)
   }
+
 })

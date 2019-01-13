@@ -1,9 +1,11 @@
 package com.can.minidoctor.core.service.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
+import com.can.minidoctor.api.dto.BaseDto;
 import com.can.minidoctor.api.dto.request.miniwx.*;
 import com.can.minidoctor.api.dto.response.ArrangementResp;
 import com.can.minidoctor.api.dto.response.DateMentLisResp;
+import com.can.minidoctor.api.dto.response.SelfResp;
 import com.can.minidoctor.api.dto.response.wxmini.DateDetailResp;
 import com.can.minidoctor.api.utils.CanStringUtils;
 import com.can.minidoctor.api.utils.DateUtils;
@@ -11,9 +13,11 @@ import com.can.minidoctor.api.utils.ResultUtils;
 import com.can.minidoctor.core.dao.arrangement.MiniArrangeMentDao;
 import com.can.minidoctor.core.dao.datement.MiniDateMentDao;
 
+import com.can.minidoctor.core.dao.user.MinidoctorUserDao;
 import com.can.minidoctor.core.entity.MinidoctorArrangement;
 
 import com.can.minidoctor.core.entity.MinidoctorDatement;
+import com.can.minidoctor.core.entity.MinidoctorUser;
 import com.can.minidoctor.core.enums.DigitalEnums;
 import com.can.minidoctor.core.enums.HospitalEnums;
 import com.can.minidoctor.core.enums.SectionTypeEnums;
@@ -57,6 +61,12 @@ public class MiniBusinessService {
 
     @Autowired
     MessageSenderService messageSenderService;
+    @Autowired
+    MinidoctorUserDao minidoctorUserDao;
+
+    public Result getUserInfo(BaseDto req){
+        return null;
+    }
 
     public Result getDateDetail(DateDetailReq req){
         MinidoctorDatement md=miniDateMentDao.getDatementById(req.getDateMentId());
@@ -68,6 +78,12 @@ public class MiniBusinessService {
             resp.setMobile(md.getMobile());
             resp.setName(md.getName());
             resp.setWorkDate(DateUtils.formatDate(md.getWorkDate())+":"+md.getTimeSection());
+
+            MinidoctorUser user=minidoctorUserDao.getUserByOpenId(req.getMdc_openId());
+            if(null!=user){
+                resp.setAdmin(user.getUserRole().intValue());
+            }
+
             return ResultUtils.getOkResult(resp);
         }
         return ResultUtils.getFailedResult(1,"没有找到");
@@ -92,11 +108,17 @@ public class MiniBusinessService {
             dmr.setDateMentId(md.getId());
             resps.add(dmr);
         }
-        return ResultUtils.getOkResult(resps);
+        SelfResp selfResp=new SelfResp();
+        selfResp.setMyDates(resps);
+        MinidoctorUser user=minidoctorUserDao.getUserByOpenId(req.getMdc_openId());
+        if(null!=user){
+            selfResp.setAdmin(user.getUserRole().intValue());
+        }
+        return ResultUtils.getOkResult(selfResp);
     }
 
     public Result makeAnArrangeMemt(MakeAnArrangeReq req){
-        String[] arr=req.getWorkDate().split(":");
+        String[] arr=req.getWorkDate().split("@");
         if(arr!=null&&arr.length<2){
             return ResultUtils.getFailedResult(1,"error");
         }
@@ -193,8 +215,8 @@ public class MiniBusinessService {
 
     public Result getFutureArrange(FutureArrangReq req){
 
-        List<MinidoctorArrangement> rets=miniArrangeMentDao.getFutureArrangeMents(new Date(),req.getHospital());
-        List<ArrangementResp> resps=getDefaultArrange();
+        List<MinidoctorArrangement> rets=miniArrangeMentDao.getFutureArrangeMents(new Date(),req.getHospital(),req.getAmount());
+        List<ArrangementResp> resps=getDefaultArrange(req.getAmount());
 
         for(ArrangementResp ar:resps){
             MinidoctorArrangement rightOne=getRightOne(rets,ar.getDate());
@@ -225,10 +247,10 @@ public class MiniBusinessService {
         return null;
     }
 
-    private List<ArrangementResp> getDefaultArrange(){
+    private List<ArrangementResp> getDefaultArrange(int size){
         List<ArrangementResp> def=new ArrayList<>();
         Date today=new Date();
-        for(int i=0;i<12;i++){
+        for(int i=0;i<size;i++){
             ArrangementResp ar=new ArrangementResp();
             ar.setDate(DateUtils.formatDate(DateUtils.addDays(today,i)));
             ar.setBeforeName("上午");

@@ -8,7 +8,7 @@ package com.can.minidoctor.core.enums;
 public enum SectionTypeEnums {
     beforeNoon((byte)0,"上午"),
     afterNoon((byte)1,"下午") ,
-    beforeSupper((byte)2,"傍晚"),
+    beforeSupper((byte)2,"下午"),
     afterSupper((byte)3,"晚上");
 
 

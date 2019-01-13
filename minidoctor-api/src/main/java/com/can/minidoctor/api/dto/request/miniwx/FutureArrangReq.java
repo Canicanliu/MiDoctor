@@ -10,6 +10,16 @@ import com.can.minidoctor.api.dto.BaseDto;
 public class FutureArrangReq extends BaseDto {
     private byte hospital;
 
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     public byte getHospital() {
         return hospital;
     }

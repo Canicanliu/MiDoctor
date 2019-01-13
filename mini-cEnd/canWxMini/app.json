@@ -1,12 +1,13 @@
 {
-  "pages": [    
+  "pages": [
     "pages/book3/doctorBook",
+    "pages/consume/consume",
     "pages/book/doctorBook",
     "pages/self/self",
-    "pages/dateMentDetail/dateMentDetail",    
+    "pages/dateMentDetail/dateMentDetail",
     "pages/index/index",
-    "pages/logs/logs"
-    
+    "pages/logs/logs",
+    "components/dialog/dialog"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -33,5 +34,8 @@
         "text": "我"
       }
     ]
+  },
+  "usingComponents": {
+    "dialog": "/components/dialog/dialog"
   }
 }

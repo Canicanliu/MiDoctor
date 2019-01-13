@@ -6,7 +6,9 @@
 }
 .infoKey{
   width: 26%;
+  
 }
+
 .infoDate{
   display: flex;
   flex-direction: column;  
@@ -18,9 +20,9 @@
 }
 .info{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 5px 5px;
+  flex-direction: row;  
+  justify-content: space-evenly;
+  margin: 5px 5px;  
 }
 .btn{
   margin-top: 10px;

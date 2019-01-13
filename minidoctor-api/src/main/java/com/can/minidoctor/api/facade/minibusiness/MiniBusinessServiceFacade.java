@@ -1,6 +1,7 @@
 package com.can.minidoctor.api.facade.minibusiness;
 
 import com.can.minidoctor.api.commons.base.Result;
+import com.can.minidoctor.api.dto.BaseDto;
 import com.can.minidoctor.api.dto.request.miniwx.*;
 
 /**
@@ -21,5 +22,7 @@ public interface MiniBusinessServiceFacade {
     public Result getDateDetail(DateDetailReq req);
 
     public Result iniData();
+
+    public Result getUserInfo(BaseDto req);
 
 }

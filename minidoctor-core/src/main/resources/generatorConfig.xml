@@ -20,8 +20,8 @@
             <!--<property name="suppressDate" value="true"/>-->
         </commentGenerator>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8" userId="root"
-                        password="123456"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://203.195.129.169:3506/test?characterEncoding=UTF-8" userId="root"
+                        password="root"/>
 
         <javaModelGenerator targetPackage="com.can.minidoctor.core.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
@@ -44,7 +44,11 @@
             <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
 
-        <table tableName="minidoctor_datement" domainObjectName="MinidoctorDatement">
+        <!--<table tableName="minidoctor_datement" domainObjectName="MinidoctorDatement">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+        <table tableName="minidoctor_user" domainObjectName="MinidoctorUser">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
 

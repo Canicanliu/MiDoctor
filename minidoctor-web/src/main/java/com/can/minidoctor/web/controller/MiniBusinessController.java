@@ -2,6 +2,7 @@ package com.can.minidoctor.web.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.can.minidoctor.api.aop.log.LogParams;
+import com.can.minidoctor.api.dto.BaseDto;
 import com.can.minidoctor.api.dto.request.miniwx.*;
 import com.can.minidoctor.api.facade.minibusiness.MiniBusinessServiceFacade;
 import com.can.minidoctor.api.facade.wxmini.WxMiniServiceFacade;
@@ -22,6 +23,16 @@ public class MiniBusinessController {
     @Reference(version = "1.0.0")
     MiniBusinessServiceFacade miniBusinessServiceFacade;
 
+    @Reference(version = "1.0.0")
+    WxMiniServiceFacade wxMiniService;
+
+
+    @RequestMapping("/getUserInfo")
+    @LogParams("获取用户信息")
+    public Object getUserInfo(@RequestBody BaseDto req){
+
+        return miniBusinessServiceFacade.getUserInfo(req);
+    }
 
     @RequestMapping("/makeADate")
     @LogParams("在线预约")

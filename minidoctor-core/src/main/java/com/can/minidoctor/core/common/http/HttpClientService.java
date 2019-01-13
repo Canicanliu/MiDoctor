@@ -17,6 +17,9 @@ import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -63,6 +66,22 @@ public class HttpClientService {
             String result=new String(post(path,param,host),Charsets.UTF_8.name());
             LOGGER.info("post请求:{},结果:{}",path, result);
             return result;
+        }catch (Exception e){
+            LOGGER.error("请求{}异常,参数:{}",path, JsonUtils.toJson(param),e);
+            return null;
+        }
+    }
+
+    public BufferedImage httpsPostImage(String path, Map<String,String> param) {
+        try{
+            LOGGER.info("post请求:{},参数:{}",path, JsonUtils.toJson(param));
+            HttpPost httpPost = new HttpPost(path);
+            HttpHost host = new HttpHost(httpPost.getURI().getHost(), 443,"https");
+            byte[] retByte=post(path,param,host);
+            ByteArrayInputStream in = new ByteArrayInputStream(retByte);
+
+            BufferedImage image = ImageIO.read(in);
+            return image;
         }catch (Exception e){
             LOGGER.error("请求{}异常,参数:{}",path, JsonUtils.toJson(param),e);
             return null;

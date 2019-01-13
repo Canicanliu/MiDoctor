@@ -3,6 +3,7 @@ package com.can.minidoctor.core.service.wxmini.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.can.minidoctor.api.aop.log.LogParams;
 import com.can.minidoctor.api.commons.base.Result;
+import com.can.minidoctor.api.dto.request.miniwx.WxMiniLoginReq;
 import com.can.minidoctor.api.dto.response.wxmini.WxMiniLoginResp;
 import com.can.minidoctor.api.facade.wxmini.WxMiniServiceFacade;
 import com.can.minidoctor.api.utils.CanStringUtils;
@@ -26,8 +27,8 @@ public class WxMiniServiceFacadeImpl implements WxMiniServiceFacade {
 
     @Override
     @LogParams("登录")
-    public Result doMiniLogin(String code) {
-        return wxMiniService.doMiniLogin(code);
+    public Result doMiniLogin(WxMiniLoginReq req) {
+        return wxMiniService.doMiniLogin(req);
     }
 
 
@@ -42,7 +43,7 @@ public class WxMiniServiceFacadeImpl implements WxMiniServiceFacade {
                 return ResultUtils.getOkResult(value);
             }
         }
-        return ResultUtils.getFailedResult(1,"不合法的sessionId");
+        return ResultUtils.getFailedResult(8888,"不合法的sessionId");
     }
 
 }

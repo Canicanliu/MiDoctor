@@ -28,6 +28,12 @@ public class MinidoctorArrangementTest extends BasicTest {
     WxMiniService wxMiniService;
 
     @Test
+    public void TestGetWXCode(){
+        wxMiniService.getWxaCodeUnlimit("current=1","",60);
+        System.out.println();
+    }
+
+    @Test
     public void testInsert(){
         Date today=new Date();
         for(int i=0;i<100;i++){

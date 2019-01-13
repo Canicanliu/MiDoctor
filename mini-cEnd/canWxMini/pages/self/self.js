@@ -1,4 +1,5 @@
 import canHost from '../../config/interface.js'
+import { loginWx, loginWxWithAuth } from '../../config/interface.js'
 //获取应用实例
 const app = getApp()
 
@@ -12,6 +13,7 @@ Page({
   },
   //事件处理函数  
   onLoad: function () {
+    
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -29,6 +31,7 @@ Page({
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
+        withCredentials:true,
         success: res => {
           app.globalData.userInfo = res.userInfo
           this.setData({
@@ -38,48 +41,14 @@ Page({
         }
       })
     }
-
-    var that = this
-    wx.request({
-      url: canHost.miniHost +canHost.getMyDateMents+'sessionId=' + wx.getStorageSync("miniSessionId"),
-      method: "POST",
-      data:{},
-      success: function (result) {
-        that.setData({
-          dateMentInfos: result.data.data
-        })
-        console.log(result.data.data)
-
-      }
-    })
-
+    this.getSelf(this) 
   },
   bindViewEvent: function (e) {
     app.process(this, e)
 
   },
   getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    // this.setData({
-    //   userInfo: e.detail.userInfo,
-    //   hasUserInfo: false
-    // })
-
-    wx.login({
-      success: function (res) {
-        console.log(res.code)
-        var code = res.code
-        wx.request({
-          url: canHost.miniHost +canHost.miniLogin+'code=' + code,
-          method: "POST",
-          success: function (result) {
-            console.log(result)
-          }
-        })
-      }
-    })
-
+    loginWxWithAuth(this,app,e)
   },
   //获取详情
   getDetail:function(e){
@@ -91,21 +60,24 @@ Page({
   /**
  * 生命周期函数--监听页面显示
  */
-  onShow: function () {
-    var that=this;
+  onShow: function () {    
+    this.getSelf(this)    
+  },
+  getSelf(that){
     wx.request({
       url: canHost.miniHost + canHost.getMyDateMents + 'sessionId=' + wx.getStorageSync("miniSessionId"),
       method: "POST",
       data: {},
       success: function (result) {
         that.setData({
-          dateMentInfos: result.data.data
+          dateMentInfos: result.data.data.myDates
         })
         console.log(result.data.data)
 
       }
     })
   }
+
 
 
 })

@@ -6,6 +6,7 @@ import com.can.minidoctor.api.commons.base.Result;
 import com.can.minidoctor.api.dto.request.miniwx.MessageData;
 import com.can.minidoctor.api.dto.request.miniwx.WxMessageSendReq;
 import com.can.minidoctor.api.dto.response.wxmini.MessageResp;
+import com.can.minidoctor.api.utils.CanStringUtils;
 import com.can.minidoctor.api.utils.JsonUtils;
 import com.can.minidoctor.api.utils.ResultUtils;
 import com.can.minidoctor.core.common.http.HttpClientService;
@@ -60,9 +61,9 @@ public class MessageSenderService {
      * @return
      */
     public MessageResp sendAMessageByWx(WxMessageSendReq sendReq){
-        Result result=wxMiniService.getMiniAccessToken();
-        if(ResultUtils.OK==result.getCode()){
-            String accessToken=result.getData().toString();
+        String result=wxMiniService.getMiniAccessToken();
+        if(!CanStringUtils.nullOrEmpty(result)){
+            String accessToken=result;
             Map<String,String> param= JsonUtils.toObject(JsonUtils.toJson(sendReq),Map.class);
             String resp=clientService.httpsPost(sendWxMessageUrl+accessToken,param);
             return JsonUtils.toObject(resp,MessageResp.class);
