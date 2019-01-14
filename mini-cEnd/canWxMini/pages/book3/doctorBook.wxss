@@ -26,7 +26,8 @@
 }
 .infoDate{  
   width: 95%;
-  margin: 10px 10px;
+  margin-top: 38px;
+  
   z-index: 2;
   
 }
@@ -66,9 +67,7 @@
     border-radius: 4PX 4PX 4PX 4PX;
 }
 
-.grid:active {
-    background-color: #ECECEC;
-}  
+ 
  
 .grid__bg {
     position: relative;
@@ -112,14 +111,19 @@
     margin: 1px 5px;
     text-align: center;
     font-weight: bold;
+    height: 25px;
+    line-height: 25px;
     padding: 3px 0px;
-    font-size: 12px;
+    font-size: 14px;
     white-space: nowrap;
     text-overflow: ellipsis;
     border-top: 1px;
     overflow: hidden;
     border-bottom: 1px solid #ccc;
 }
+.grid__sub:active {
+    background-color: #ECECEC;
+}  
 .grid__sub:last-child{
   border-bottom-width:0;
 }

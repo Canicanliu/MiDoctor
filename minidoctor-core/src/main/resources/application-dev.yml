@@ -45,6 +45,10 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml,classpath:mapper/custom/*.xml
   type-aliases-package: com.midea.cmimp.core.provider.entity
 
+redis:
+  host: 203.195.129.169
+  port: 6379
+
 wx:
   miniprogram:
     appId: wxc50c61e3025c752c

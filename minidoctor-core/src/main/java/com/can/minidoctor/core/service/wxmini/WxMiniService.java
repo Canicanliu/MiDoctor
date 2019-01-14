@@ -72,6 +72,7 @@ public class WxMiniService {
         BaseWxResponse baseWxResponse=JsonUtils.toObject(wxResp,BaseWxResponse.class);
         if(null!=baseWxResponse&&ResultUtils.OK!=baseWxResponse.getErrcode()){
             LOGGER.info("微信登录失败",wxResp);
+            return ResultUtils.getFailedResult(baseWxResponse.getErrcode(),baseWxResponse.getErrmsg());
         }
 
         String key= CanStringUtils.getRandomStr();

@@ -201,7 +201,7 @@ public class MiniBusinessService {
             MessageDataItem keyword3=new MessageDataItem();
             keyword3.setValue(DateUtils.getDateStr(datement.getWorkDate(),"yyyy-MM-dd"));
             MessageDataItem keyword4=new MessageDataItem();
-            keyword4.setValue(DateUtils.getDateStr(new Date(),"yyyy-MM-dd hh:mm:ss"));
+            keyword4.setValue(DateUtils.getDateStr(new Date(),"yyyy-MM-dd HH:mm:ss"));
             messageData.setKeyword1(keyword1);
             messageData.setKeyword2(keyword2);
             messageData.setKeyword3(keyword3);

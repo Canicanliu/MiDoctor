@@ -12,7 +12,7 @@ Page({
     amount:12,
     selDate: '',
     arrangeMents: [
-      { date: "2019-01-03", beforeName: "08:30-10:30", before: "未排班", afterName: "14:30-16:30", after: "未排班" },
+      { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
       { date: "2019-01-03", beforeName: "上午", before: "未排班", afterName: "下午", after: "未排班" },
@@ -147,16 +147,7 @@ Page({
           })
         }
       })
-    }
-    //获得dialog组件
-    this.dialog = this.selectComponent("#dialog");
-    console.log(app.globalData.userInfo)
-    if (wx.getStorageSync("miniSessionId")) { 
-      this.getFuture(this)
-    }
-    else {
-      this.showDialog();
-    }
+    }    
   },
   getFuture:function(that){
     var value = that.data.hospitalValue
@@ -196,7 +187,15 @@ Page({
     loginWxWithAuth(this, app, e.detail,this.getFuture)    
   },
   onShow: function () {
-    this.getFuture(this)
+    //获得dialog组件
+    this.dialog = this.selectComponent("#dialog");
+    console.log(app.globalData.userInfo)
+    if (wx.getStorageSync("miniSessionId")) {
+      this.getFuture(this)
+    }
+    else {
+      this.showDialog();
+    }
   }
 
 })
